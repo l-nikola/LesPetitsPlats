@@ -1,7 +1,14 @@
 @import "../../../node_modules/bootstrap/scss/bootstrap";
 
-$primary-color: #a1db34;
+.logo {
+  width: 250px;
+  top: 45px;
+  left: 45px;
+  position: absolute;
+}
 
-body {
-  background-color: $primary-color;
+.test {
+  width: 100%;
+  height: 960px;
+  object-fit: cover;
 }
