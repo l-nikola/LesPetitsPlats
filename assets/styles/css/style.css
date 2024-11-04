@@ -11844,17 +11844,21 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-.logo {
+.header__logo {
   width: 250px;
   top: 45px;
   left: 45px;
   position: absolute;
+  z-index: 1;
 }
 
-.test {
+.header__picture {
   width: 100%;
-  height: 960px;
+  height: 1050px;
+  top: -175px;
   object-fit: cover;
+  position: relative;
+  z-index: 0;
 }
 
 /*# sourceMappingURL=style.css.map */
