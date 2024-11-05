@@ -4,6 +4,7 @@
  * Copyright 2011-2024 The Bootstrap Authors
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+@import url("https://fonts.googleapis.com/css2?family=Anton:wght@400&display=swap");
 :root,
 [data-bs-theme=light] {
   --bs-blue: #0d6efd;
@@ -11844,6 +11845,15 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.header__picture {
+  width: 100%;
+  height: 1050px;
+  top: -175px;
+  object-fit: cover;
+  position: relative;
+  z-index: 0;
+}
+
 .header__logo {
   width: 250px;
   top: 45px;
@@ -11852,13 +11862,15 @@ textarea.form-control-lg {
   z-index: 1;
 }
 
-.header__picture {
-  width: 100%;
-  height: 1050px;
-  top: -175px;
-  object-fit: cover;
-  position: relative;
-  z-index: 0;
+.header__title {
+  color: var(--Yellow, #ffd15b);
+  text-align: center;
+  font-family: Anton;
+  font-size: 44px;
+  width: 890px;
+  top: 245px;
+  left: 25%;
+  position: absolute;
 }
 
 /*# sourceMappingURL=style.css.map */
