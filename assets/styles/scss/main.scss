@@ -1,5 +1,6 @@
 @import "../../../node_modules/bootstrap/scss/bootstrap";
 @import url("https://fonts.googleapis.com/css2?family=Anton:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500&display=swap");
 
 .header__picture {
   width: 100%;
@@ -29,4 +30,21 @@
   left: 25%;
 
   position: absolute;
+}
+
+.groupSelect {
+  display: flex;
+  gap: 75px;
+}
+
+.select {
+  padding: 17px 16px;
+  border-radius: 11px;
+  font-family: Manrope;
+  font-weight: 500;
+  border: none;
+}
+
+main {
+  background: #ededed;
 }
