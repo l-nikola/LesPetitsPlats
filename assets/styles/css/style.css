@@ -11865,9 +11865,18 @@ textarea.form-control-lg {
   color: var(--Yellow, #ffd15b);
   font-family: Anton;
   font-size: 44px;
-  width: 750px;
-  top: 245px;
+  width: 730px;
+  top: 300px;
   position: absolute;
+}
+.header__input {
+  top: 460px;
+  position: absolute;
+  z-index: 1;
+  width: 954px;
+  height: 72px;
+  border-radius: 11px;
+  background: #fff;
 }
 
 main {
