@@ -2,34 +2,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Anton:wght@400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500&display=swap");
 
-.header__picture {
-  width: 100%;
-  height: 1050px;
-  top: -175px;
-  object-fit: cover;
-  position: relative;
-  z-index: 0;
-}
+@import "components/header.scss";
 
-.header__logo {
-  width: 250px;
-  top: 45px;
-  left: 45px;
-  position: absolute;
-  z-index: 1;
-}
-
-.header__title {
-  color: var(--Yellow, #ffd15b);
-  text-align: center;
-  font-family: Anton;
-  font-size: 44px;
-
-  width: 890px;
-  top: 245px;
-  left: 25%;
-
-  position: absolute;
+main {
+  background: #ededed;
 }
 
 .groupSelect {
@@ -43,8 +19,4 @@
   font-family: Manrope;
   font-weight: 500;
   border: none;
-}
-
-main {
-  background: #ededed;
 }

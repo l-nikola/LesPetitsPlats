@@ -11854,7 +11854,6 @@ textarea.form-control-lg {
   position: relative;
   z-index: 0;
 }
-
 .header__logo {
   width: 250px;
   top: 45px;
@@ -11862,16 +11861,17 @@ textarea.form-control-lg {
   position: absolute;
   z-index: 1;
 }
-
 .header__title {
   color: var(--Yellow, #ffd15b);
-  text-align: center;
   font-family: Anton;
   font-size: 44px;
-  width: 890px;
+  width: 750px;
   top: 245px;
-  left: 25%;
   position: absolute;
+}
+
+main {
+  background: #ededed;
 }
 
 .groupSelect {
@@ -11885,10 +11885,6 @@ textarea.form-control-lg {
   font-family: Manrope;
   font-weight: 500;
   border: none;
-}
-
-main {
-  background: #ededed;
 }
 
 /*# sourceMappingURL=style.css.map */
