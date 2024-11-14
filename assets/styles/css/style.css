@@ -11894,21 +11894,28 @@ textarea.form-control-lg {
   z-index: 2;
 }
 
-main {
-  background: #ededed;
+.selectSection {
+  padding: 15px 70px;
 }
-
-.groupSelect {
+.selectSection__groupSelect {
   display: flex;
-  gap: 75px;
+  gap: 65px;
 }
-
-.select {
+.selectSection__groupSelect__select {
   padding: 17px 16px;
   border-radius: 11px;
   font-family: Manrope;
   font-weight: 500;
   border: none;
+}
+.selectSection__selectText {
+  font-family: Anton;
+  font-size: 21px;
+}
+
+main {
+  background: #ededed;
+  margin-top: -195px;
 }
 
 /*# sourceMappingURL=style.css.map */

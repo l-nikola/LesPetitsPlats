@@ -1,0 +1,21 @@
+.selectSection {
+  padding: 15px 70px;
+
+  &__groupSelect {
+    display: flex;
+    gap: 65px;
+
+    &__select {
+      padding: 17px 16px;
+      border-radius: 11px;
+      font-family: Manrope;
+      font-weight: 500;
+      border: none;
+    }
+  }
+
+  &__selectText {
+    font-family: Anton;
+    font-size: 21px;
+  }
+}

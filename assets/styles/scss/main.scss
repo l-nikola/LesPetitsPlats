@@ -3,20 +3,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500&display=swap");
 
 @import "components/header.scss";
+@import "components/select.scss";
 
 main {
   background: #ededed;
-}
-
-.groupSelect {
-  display: flex;
-  gap: 75px;
-}
-
-.select {
-  padding: 17px 16px;
-  border-radius: 11px;
-  font-family: Manrope;
-  font-weight: 500;
-  border: none;
+  margin-top: -195px;
 }
