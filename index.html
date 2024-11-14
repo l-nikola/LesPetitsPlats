@@ -8,26 +8,32 @@
   </head>
   <body>
     <header class="header">
+      <img
+        class="header__picture"
+        src="assets/images/header.jpg"
+        alt="Image montrant un plats"
+      />
       <a href="/"
         ><img
           class="header__logo"
           src="assets/images/Logo.svg"
           alt="Logo du site"
       /></a>
-      <img
-        class="header__picture"
-        src="assets/images/header.jpg"
-        alt="Image montrant un plats"
-      />
-        <div class="row justify-content-center text-center">
-          <p class="header__title">
-            CHERCHEZ PARMI PLUS DE 1500 RECETTES DU QUOTIDIEN,SIMPLES ET
-            DÉLICIEUSES
-          </p>
+      <section class="row justify-content-center text-center">
+        <p class="header__title">
+          CHERCHEZ PARMI PLUS DE 1500 RECETTES DU QUOTIDIEN, SIMPLES ET
+          DÉLICIEUSES
+        </p>
 
-          <input class="header__input" type="text" placeholder="Rechercher une recette, un ingrédient, ...">
+        <div class="header__inputContainer">
+          <input
+            class="header__inputContainer__input"
+            type="text"
+            placeholder="Rechercher une recette, un ingrédient, ..."
+          />
+          <button class="header__inputContainer__searchBtn"></button>
         </div>
-      </div>
+      </section>
     </header>
 
     <main>
