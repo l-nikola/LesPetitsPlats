@@ -11913,24 +11913,63 @@ textarea.form-control-lg {
   font-size: 21px;
 }
 
-.recipe__card {
+.recipe {
+  margin-left: 500px;
   width: 380px;
   height: 731px;
   top: 475px;
   left: 1025px;
-  gap: 0px;
-  border-radius: 21px 0px 0px 0px;
+  border-radius: 20px;
   background-color: white;
+}
+.recipe__card {
+  color: black;
 }
 .recipe__card__img {
   width: 380px;
   height: 253px;
-  gap: 0px;
-  opacity: 0px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 }
+.recipe__card__time {
+  display: inline-flex;
+  padding: 5px 15px;
+  border-radius: 14px;
+  background: var(--Yellow, #ffd15b);
+}
+.recipe__card__info {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 330px;
+}
+.recipe__card__info__title {
+  font-family: Anton;
+  font-size: 18px;
+  width: 100%;
+}
+.recipe__card__info__steps__text {
+  font-family: Manrope;
+  font-size: 14px;
+}
+.recipe__card__info__subTitle {
+  color: var(--Grey, #7a7a7a);
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.08px;
+}
+.recipe__card__info__ingredients {
+  width: 100%;
+}
+
 main {
   background: #ededed;
   margin-top: -195px;
+}
+
+a {
+  text-decoration: none;
 }
 
 /*# sourceMappingURL=style.css.map */
