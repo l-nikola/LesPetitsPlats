@@ -1,5 +1,5 @@
 .recipe {
-  margin-left: 500px; // REMOVE
+  margin-left: 50px; // REMOVE
 
   width: 380px;
   height: 731px;
@@ -10,6 +10,7 @@
 
   &__card {
     color: black;
+    position: relative;
 
     &__img {
       width: 380px;
@@ -20,10 +21,14 @@
     }
 
     &__time {
-      display: inline-flex;
+      position: absolute;
+      top: 20px;
+      right: 20px;
       padding: 5px 15px;
       border-radius: 14px;
       background: var(--Yellow, #ffd15b);
+      font-family: Manrope;
+      font-size: 12px;
     }
 
     &__info {

@@ -11914,7 +11914,7 @@ textarea.form-control-lg {
 }
 
 .recipe {
-  margin-left: 500px;
+  margin-left: 50px;
   width: 380px;
   height: 731px;
   top: 475px;
@@ -11924,6 +11924,7 @@ textarea.form-control-lg {
 }
 .recipe__card {
   color: black;
+  position: relative;
 }
 .recipe__card__img {
   width: 380px;
@@ -11933,10 +11934,14 @@ textarea.form-control-lg {
   object-fit: cover;
 }
 .recipe__card__time {
-  display: inline-flex;
+  position: absolute;
+  top: 20px;
+  right: 20px;
   padding: 5px 15px;
   border-radius: 14px;
   background: var(--Yellow, #ffd15b);
+  font-family: Manrope;
+  font-size: 12px;
 }
 .recipe__card__info {
   display: flex;
