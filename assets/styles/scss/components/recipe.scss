@@ -60,6 +60,18 @@
 
       &__ingredients {
         width: 100%;
+
+        &__name {
+          font-family: Manrope;
+          font-size: 14px;
+          font-weight: 500;
+        }
+
+        &__quantity {
+          color: var(--Grey, #7a7a7a);
+          font-family: Manrope;
+          font-size: 14px;
+        }
       }
     }
   }

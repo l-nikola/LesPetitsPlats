@@ -11968,6 +11968,16 @@ textarea.form-control-lg {
 .recipe__card__info__ingredients {
   width: 100%;
 }
+.recipe__card__info__ingredients__name {
+  font-family: Manrope;
+  font-size: 14px;
+  font-weight: 500;
+}
+.recipe__card__info__ingredients__quantity {
+  color: var(--Grey, #7a7a7a);
+  font-family: Manrope;
+  font-size: 14px;
+}
 
 main {
   background: #ededed;
@@ -11976,6 +11986,10 @@ main {
 
 a {
   text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
 }
 
 /*# sourceMappingURL=style.css.map */
