@@ -11930,6 +11930,7 @@ textarea.form-control-lg {
   height: 253px;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
+  object-fit: cover;
 }
 .recipe__card__time {
   display: inline-flex;
