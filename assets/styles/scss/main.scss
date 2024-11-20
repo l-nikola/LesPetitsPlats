@@ -9,6 +9,12 @@
 @import "components/select.scss";
 @import "components/recipe.scss";
 
+// ********** Variables **********
+:root {
+  --yellow: #ffd15b;
+  --grey: #7a7a7a;
+}
+
 // ********** General **********
 main {
   background: #ededed;

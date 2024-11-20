@@ -30,7 +30,7 @@
       right: 20px;
       padding: 5px 15px;
       border-radius: 14px;
-      background: var(--Yellow, #ffd15b);
+      background: var(--yellow);
       font-size: 12px;
     }
 
@@ -59,7 +59,7 @@
 
       // **** Recipe Subtitle ****
       &__subTitle {
-        color: var(--Grey, #7a7a7a);
+        color: var(--grey);
         font-size: 12px;
         font-weight: 700;
         letter-spacing: 1.08px;
@@ -77,7 +77,7 @@
 
         // **** Recipe group ingredients quantity ****
         &__quantity {
-          color: var(--Grey, #7a7a7a);
+          color: var(--grey);
           font-size: 14px;
         }
       }
