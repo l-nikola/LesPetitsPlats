@@ -11,6 +11,7 @@
   &__card {
     color: black;
     position: relative;
+    font-family: Manrope;
 
     &__img {
       width: 380px;
@@ -27,7 +28,6 @@
       padding: 5px 15px;
       border-radius: 14px;
       background: var(--Yellow, #ffd15b);
-      font-family: Manrope;
       font-size: 12px;
     }
 
@@ -46,14 +46,12 @@
 
       &__steps {
         &__text {
-          font-family: Manrope;
           font-size: 14px;
         }
       }
 
       &__subTitle {
         color: var(--Grey, #7a7a7a);
-        font-family: Manrope;
         font-size: 12px;
         font-weight: 700;
         letter-spacing: 1.08px;
@@ -63,14 +61,12 @@
         width: 100%;
 
         &__name {
-          font-family: Manrope;
           font-size: 14px;
           font-weight: 500;
         }
 
         &__quantity {
           color: var(--Grey, #7a7a7a);
-          font-family: Manrope;
           font-size: 14px;
         }
       }
