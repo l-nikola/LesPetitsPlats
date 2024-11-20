@@ -1,4 +1,6 @@
+// ********** headerSection **********
 .headerSection {
+  // **** Header title ****
   &__title {
     color: var(--Yellow, #ffd15b);
     font-family: Anton;
@@ -8,12 +10,14 @@
     position: absolute;
   }
 
+  // **** Group input and search button ****
   &__inputContainer {
     position: absolute;
     top: 460px;
     width: 954px;
     display: flex;
 
+    // **** Input ****
     &__input {
       width: 100%;
       height: 72px;
@@ -23,6 +27,7 @@
       padding-left: 20px;
     }
 
+    // **** Serch button ****
     &__searchBtn {
       width: 50px;
       height: 50px;
@@ -33,6 +38,7 @@
       position: absolute;
       z-index: 2;
 
+      // **** Button icon ****
       &__magnifyingGlass {
         color: white;
       }

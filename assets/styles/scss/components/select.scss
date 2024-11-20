@@ -1,10 +1,11 @@
+// ********** Select **********
 .selectSection {
   padding: 15px 70px;
-
+  // **** Group select ****
   &__groupSelect {
     display: flex;
     gap: 65px;
-
+    // **** Select style ****
     &__select {
       padding: 17px 16px;
       border-radius: 11px;
@@ -13,8 +14,8 @@
       border: none;
     }
   }
-
-  &__selectText {
+  // **** Recipe number ****
+  &__recipeNumber {
     font-family: Anton;
     font-size: 21px;
   }

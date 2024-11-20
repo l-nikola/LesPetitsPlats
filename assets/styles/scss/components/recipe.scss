@@ -1,6 +1,6 @@
+// ********** Recipe **********
 .recipe {
   margin-bottom: 50px;
-
   width: 380px;
   height: 670px;
   top: 475px;
@@ -8,11 +8,13 @@
   border-radius: 20px;
   background-color: white;
 
+  // **** Recipe card ****
   &__card {
     color: black;
     position: relative;
     font-family: Manrope;
 
+    // **** Recipe picture ****
     &__img {
       width: 380px;
       height: 253px;
@@ -21,6 +23,7 @@
       object-fit: cover;
     }
 
+    // **** Recipe time ****
     &__time {
       position: absolute;
       top: 20px;
@@ -31,12 +34,14 @@
       font-size: 12px;
     }
 
+    // **** Recipe info ****
     &__info {
       display: flex;
       flex-direction: column;
       margin: 0 auto;
       width: 330px;
 
+      // **** Recipe title ****
       &__title {
         font-family: Anton;
         font-size: 18px;
@@ -44,12 +49,15 @@
         margin: 30px 0;
       }
 
+      // **** Recipe group step ****
       &__steps {
+        // **** Recipe step text****
         &__text {
           font-size: 14px;
         }
       }
 
+      // **** Recipe Subtitle ****
       &__subTitle {
         color: var(--Grey, #7a7a7a);
         font-size: 12px;
@@ -57,14 +65,17 @@
         letter-spacing: 1.08px;
       }
 
+      // **** Recipe group ingredients ****
       &__ingredients {
         width: 100%;
 
+        // **** Recipe group ingredients name ****
         &__name {
           font-size: 14px;
           font-weight: 500;
         }
 
+        // **** Recipe group ingredients quantity ****
         &__quantity {
           color: var(--Grey, #7a7a7a);
           font-size: 14px;
