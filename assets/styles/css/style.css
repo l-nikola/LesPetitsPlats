@@ -11861,7 +11861,8 @@ textarea.form-control-lg {
   position: absolute;
   z-index: 1;
 }
-.header__title {
+
+.headerSection__title {
   color: var(--Yellow, #ffd15b);
   font-family: Anton;
   font-size: 44px;
@@ -11869,13 +11870,13 @@ textarea.form-control-lg {
   top: 300px;
   position: absolute;
 }
-.header__inputContainer {
+.headerSection__inputContainer {
   position: absolute;
   top: 460px;
   width: 954px;
   display: flex;
 }
-.header__inputContainer__input {
+.headerSection__inputContainer__input {
   width: 100%;
   height: 72px;
   border-radius: 11px 0 0 11px;
@@ -11883,7 +11884,7 @@ textarea.form-control-lg {
   border: none;
   padding-left: 20px;
 }
-.header__inputContainer__searchBtn {
+.headerSection__inputContainer__searchBtn {
   width: 50px;
   height: 50px;
   left: 880px;
@@ -11893,7 +11894,7 @@ textarea.form-control-lg {
   position: absolute;
   z-index: 2;
 }
-.header__inputContainer__searchBtn__magnifyingGlass {
+.headerSection__inputContainer__searchBtn__magnifyingGlass {
   color: white;
 }
 
