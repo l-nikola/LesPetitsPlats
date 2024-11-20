@@ -49,6 +49,10 @@
       background: var(--Black, #1b1b1b);
       position: absolute;
       z-index: 2;
+
+      &__magnifyingGlass {
+        color: white;
+      }
     }
   }
 }

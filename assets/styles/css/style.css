@@ -11893,6 +11893,9 @@ textarea.form-control-lg {
   position: absolute;
   z-index: 2;
 }
+.header__inputContainer__searchBtn__magnifyingGlass {
+  color: white;
+}
 
 .selectSection {
   padding: 15px 70px;
