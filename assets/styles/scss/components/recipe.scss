@@ -57,6 +57,10 @@
         // **** Recipe step text****
         &__text {
           font-size: 14px;
+          display: -webkit-box; // Utilisation de flexbox vertical
+          -webkit-box-orient: vertical; // Orientation en colonne
+          -webkit-line-clamp: 4; // Limiter à 4 lignes
+          overflow: hidden; // Cacher le contenu qui dépasse
         }
       }
 

@@ -11964,6 +11964,10 @@ textarea.form-control-lg {
 }
 .recipe__card__info__steps__text {
   font-size: 14px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
 }
 .recipe__card__info__subTitle {
   color: var(--grey);
