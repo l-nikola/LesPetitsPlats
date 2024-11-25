@@ -7,7 +7,7 @@
 .recipe {
   padding: 0;
   width: 380px;
-  height: 670px;
+  height: 730px;
   border-radius: 20px;
   background-color: white;
 
@@ -75,6 +75,7 @@
       // **** Recipe group ingredients ****
       &__ingredients {
         width: 100%;
+        margin-top: 25px;
 
         // **** Recipe group ingredients name ****
         &__name {

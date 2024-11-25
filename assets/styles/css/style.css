@@ -11925,7 +11925,7 @@ textarea.form-control-lg {
 .recipe {
   padding: 0;
   width: 380px;
-  height: 670px;
+  height: 730px;
   border-radius: 20px;
   background-color: white;
 }
@@ -11977,6 +11977,7 @@ textarea.form-control-lg {
 }
 .recipe__card__info__ingredients {
   width: 100%;
+  margin-top: 25px;
 }
 .recipe__card__info__ingredients__name {
   font-size: 14px;
