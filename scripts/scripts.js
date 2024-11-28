@@ -26,12 +26,21 @@ function filterRecipes(searchTerm) {
       `Aucune recette ne contient '${searchTerm}', vous pouvez chercher 'tarte aux pommes', 'poisson', etc.`
     );
   }
+  return filteredRecipes;
 }
 
 // Ajouter un écouteur d'événement sur la barre de recherche
 document.getElementById("searchBar").addEventListener("input", (event) => {
   const searchTerm = event.target.value.trim(); // Récupérer le texte saisi
   if (searchTerm.length > 3) {
-    filterRecipes(searchTerm); // Filtre les recettes
+    const filteredRecipes = filterRecipes(searchTerm); // Filtre les recettes
+
+    // Récupérer l'élément HTML pour afficher le nombre
+    const recipeCountElement = document.getElementById("recipeCounter");
+
+    // Mettre à jour le nombre de recettes affichées
+    recipeCountElement.textContent = `${filteredRecipes.length} recette${
+      filteredRecipes.length > 1 ? "s" : ""
+    }`;
   }
 });
