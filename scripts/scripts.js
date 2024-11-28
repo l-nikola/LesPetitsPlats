@@ -33,3 +33,10 @@ document.getElementById("searchBar").addEventListener("input", (event) => {
     } recette${filteredRecipes.length > 1 ? "s" : ""}`;
   }
 });
+
+// Initialisation : afficher toutes les recettes au chargement
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("recipeCounter").textContent = `${
+    recipes.length
+  } recette${recipes.length > 1 ? "s" : ""}`;
+});
