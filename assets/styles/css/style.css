@@ -7947,6 +7947,10 @@ textarea.form-control-lg {
   margin-bottom: 3rem !important;
 }
 
+.mb-6 {
+  margin-bottom: 4rem !important;
+}
+
 .mb-auto {
   margin-bottom: auto !important;
 }
@@ -11915,11 +11919,6 @@ textarea.form-control-lg {
 .selectSection__recipeNumber {
   font-family: Anton;
   font-size: 21px;
-}
-
-.rowRecipe {
-  justify-content: start;
-  gap: 50px;
 }
 
 .recipe {

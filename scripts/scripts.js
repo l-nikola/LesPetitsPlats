@@ -15,7 +15,7 @@ function filterRecipes(searchTerm) {
 // Fonction pour générer une carte de recette
 function generateRecipeCard(recipe) {
   return `
-    <article class="col-md-4 mb-4 recipe">
+    <article class="col-md-4 mb-6 mx-4 recipe">
       <a href="#">
         <figure class="recipe__card">
           <!--**** Recipe picture  ****-->
