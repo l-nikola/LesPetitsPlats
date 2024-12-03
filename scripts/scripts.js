@@ -92,6 +92,11 @@ document.getElementById("searchBar").addEventListener("input", (event) => {
     document.getElementById("recipeCounter").textContent = `${
       filteredRecipes.length
     } recette${filteredRecipes.length > 1 ? "s" : ""}`;
+  } else {
+    displayRecipes(recipes);
+    document.getElementById("recipeCounter").textContent = `${
+      recipes.length
+    } recette${recipes.length > 1 ? "s" : ""}`;
   }
 });
 
