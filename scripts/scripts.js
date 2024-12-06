@@ -78,32 +78,28 @@ function displayRecipes(recipes, searchTerm = "") {
   }
 }
 
+// Fonction pour mettre à jour le compteur de recettes
+function updateRecipeCounter(count) {
+  document.getElementById("recipeCounter").textContent = `${count} recette${
+    count > 1 ? "s" : ""
+  }`;
+}
+
 // Écouteur pour la barre de recherche
 document.getElementById("searchBar").addEventListener("input", (event) => {
   const searchTerm = event.target.value.trim(); // Récupérer le texte saisi
+  const recipesToDisplay =
+    searchTerm.length >= 3 ? filterRecipes(searchTerm) : recipes;
 
-  if (searchTerm.length > 3) {
-    const filteredRecipes = filterRecipes(searchTerm); // Filtrer les recettes
+  // Réinitialiser l'affichage et afficher les recettes
+  displayRecipes(recipesToDisplay, searchTerm);
 
-    // Afficher les recettes dans le conteneur
-    displayRecipes(filteredRecipes, searchTerm);
-
-    // Mettre à jour le nombre de recettes affichées
-    document.getElementById("recipeCounter").textContent = `${
-      filteredRecipes.length
-    } recette${filteredRecipes.length > 1 ? "s" : ""}`;
-  } else {
-    displayRecipes(recipes);
-    document.getElementById("recipeCounter").textContent = `${
-      recipes.length
-    } recette${recipes.length > 1 ? "s" : ""}`;
-  }
+  // Mettre à jour le compteur de recettes affichées
+  updateRecipeCounter(recipesToDisplay.length);
 });
 
 // Initialisation : afficher toutes les recettes au chargement
 document.addEventListener("DOMContentLoaded", () => {
   displayRecipes(recipes);
-  document.getElementById("recipeCounter").textContent = `${
-    recipes.length
-  } recette${recipes.length > 1 ? "s" : ""}`;
+  updateRecipeCounter(recipes.length);
 });
