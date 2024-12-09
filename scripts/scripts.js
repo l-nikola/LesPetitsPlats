@@ -12,6 +12,33 @@ function filterRecipes(searchTerm) {
   );
 }
 
+// Fonction pour générer un select avec tous les ingrédients
+function generateAllIngredientsSelect(recipes) {
+  const uniqueIngredients = [
+    // Éliminer les doublons
+    ...new Set(
+      recipes.flatMap((recipe) =>
+        recipe.ingredients.map((ingredient) =>
+          ingredient.ingredient.toLowerCase().replace(/s$/, "")
+        )
+      )
+    ),
+  ].sort();
+  return `
+    <select
+      class="selectSection__groupSelect__select"
+      name="allIngredients"
+    >
+      <option value="" hidden>Ingrédients</option>
+      ${uniqueIngredients.map(
+        (ingredient) => `
+            <option value="${ingredient}">${ingredient}</option>
+          `
+      )}
+    </select>
+  `;
+}
+
 // Fonction pour générer une carte de recette
 function generateRecipeCard(recipe) {
   return `
@@ -98,8 +125,14 @@ document.getElementById("searchBar").addEventListener("input", (event) => {
   updateRecipeCounter(recipesToDisplay.length);
 });
 
-// Initialisation : afficher toutes les recettes au chargement
+// Initialisation
 document.addEventListener("DOMContentLoaded", () => {
+  // Afficher toutes les recettes au chargement
   displayRecipes(recipes);
+  // Générer le compteur
   updateRecipeCounter(recipes.length);
+  // Générer le select des ingrédients
+  const ingredientSelectHTML = generateAllIngredientsSelect(recipes);
+  document.getElementById("ingredientsSelectContainer").innerHTML =
+    ingredientSelectHTML;
 });
