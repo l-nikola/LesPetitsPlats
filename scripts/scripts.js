@@ -17,10 +17,11 @@ function generateAllIngredientsSelect(recipes) {
   const uniqueIngredients = [
     // Éliminer les doublons
     ...new Set(
-      recipes.flatMap((recipe) =>
-        recipe.ingredients.map((ingredient) =>
-          ingredient.ingredient.toLowerCase().replace(/s$/, "")
-        )
+      recipes.flatMap(
+        (recipe) =>
+          recipe.ingredients.map((ingredient) =>
+            ingredient.ingredient.toLowerCase().replace(/s$/, "")
+          ) // Met en minuscule et supprime le "s" final
       )
     ),
   ].sort();
@@ -35,6 +36,30 @@ function generateAllIngredientsSelect(recipes) {
             <option value="${ingredient}">${ingredient}</option>
           `
       )}
+    </select>
+  `;
+}
+
+// Fonction pour générer un select avec tous les appareils
+function generateAllAppliancesSelect(recipes) {
+  const uniqueAppliances = [
+    // Éliminer les doublons
+    ...new Set(recipes.map((recipe) => recipe.appliance.toLowerCase())),
+  ].sort();
+
+  return `
+    <select
+      class="selectSection__groupSelect__select"
+      name="allAppliances"
+    >
+      <option value="" hidden>Appareils</option>
+      ${uniqueAppliances
+        .map(
+          (appliance) => `
+            <option value="${appliance}">${appliance}</option>
+          `
+        )
+        .join("")}
     </select>
   `;
 }
@@ -135,4 +160,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const ingredientSelectHTML = generateAllIngredientsSelect(recipes);
   document.getElementById("ingredientsSelectContainer").innerHTML =
     ingredientSelectHTML;
+  // Générer le select des appareils
+  const applianceSelectHTML = generateAllAppliancesSelect(recipes);
+  document.getElementById("appliancesSelectContainer").innerHTML =
+    applianceSelectHTML;
 });
