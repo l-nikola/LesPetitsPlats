@@ -64,6 +64,35 @@ function generateAllAppliancesSelect(recipes) {
   `;
 }
 
+function generateAllUstensilsSelect(recipes) {
+  const uniqueUstensils = [
+    // Éliminer les doublons
+    ...new Set(
+      recipes.flatMap((recipe) =>
+        recipe.ustensils.map(
+          (ustensil) => ustensil.toLowerCase().replace(/s$/, "") // Met en minuscule et supprime le "s" final
+        )
+      )
+    ),
+  ].sort();
+
+  return `
+    <select
+      class="selectSection__groupSelect__select"
+      name="allUstensils"
+    >
+      <option value="" hidden>Ustensiles</option>
+      ${uniqueUstensils
+        .map(
+          (ustensil) => `
+            <option value="${ustensil}">${ustensil}</option>
+          `
+        )
+        .join("")}
+    </select>
+  `;
+}
+
 // Fonction pour générer une carte de recette
 function generateRecipeCard(recipe) {
   return `
@@ -164,4 +193,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const applianceSelectHTML = generateAllAppliancesSelect(recipes);
   document.getElementById("appliancesSelectContainer").innerHTML =
     applianceSelectHTML;
+  // Générer le select des appareils
+  const ustensilSelectHTML = generateAllUstensilsSelect(recipes);
+  document.getElementById("ustensilSelectContainer").innerHTML =
+    ustensilSelectHTML;
 });
