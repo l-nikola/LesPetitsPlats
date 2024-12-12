@@ -11911,6 +11911,8 @@ textarea.form-control-lg {
   font-family: Manrope;
   font-weight: 500;
   border: none;
+  width: 195px;
+  height: 56px;
 }
 .selectSection__recipeNumber {
   font-family: Anton;
