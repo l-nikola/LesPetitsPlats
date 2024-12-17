@@ -11905,7 +11905,7 @@ textarea.form-control-lg {
   display: flex;
   gap: 65px;
 }
-.selectSection__groupSelect__select {
+.selectSection__groupSelect__selectDiv {
   padding: 17px 16px;
   border-radius: 11px;
   font-family: Manrope;
@@ -11913,6 +11913,11 @@ textarea.form-control-lg {
   border: none;
   width: 195px;
   height: 56px;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
 }
 .selectSection__recipeNumber {
   font-family: Anton;
