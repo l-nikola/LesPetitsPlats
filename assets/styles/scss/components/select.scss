@@ -6,7 +6,16 @@
     display: flex;
     gap: 65px;
     // **** Select style ****
-    &__select {
+    // &__select {
+    //   padding: 17px 16px;
+    //   border-radius: 11px;
+    //   font-family: Manrope;
+    //   font-weight: 500;
+    //   border: none;
+    //   width: 195px;
+    //   height: 56px;
+    // }
+    &__selectDiv {
       padding: 17px 16px;
       border-radius: 11px;
       font-family: Manrope;
