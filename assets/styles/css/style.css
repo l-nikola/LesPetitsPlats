@@ -11905,6 +11905,15 @@ textarea.form-control-lg {
   display: flex;
   gap: 65px;
 }
+.selectSection__groupSelect__select {
+  padding: 17px 16px;
+  border-radius: 11px;
+  font-family: Manrope;
+  font-weight: 500;
+  border: none;
+  width: 195px;
+  height: 56px;
+}
 .selectSection__groupSelect__selectDiv {
   padding: 17px 16px;
   border-radius: 11px;
