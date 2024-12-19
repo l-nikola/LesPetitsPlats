@@ -41,9 +41,11 @@ function createSelectFilter(data, type, placeholder) {
       selectedItemsDiv.insertAdjacentHTML(
         "beforeend",
         `
-          <div class="selected-item">
+          <div class="selectSection__groupSelect__select__selectedItem">
             ${selectedValue}
-            <button class="remove-button">X</button>
+            <button class="selectSection__groupSelect__select__selectedItem__remove">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
           </div>
         `
       );
@@ -56,13 +58,13 @@ function createSelectFilter(data, type, placeholder) {
 
       // Ajouter un gestionnaire d'événements pour le bouton de suppression
       const removeButton = selectedItemsDiv.querySelector(
-        `.selected-item:last-child .remove-button`
+        `.selectSection__groupSelect__select__selectedItem:last-child .selectSection__groupSelect__select__selectedItem__remove`
       );
       removeButton.addEventListener("click", () => {
         // Supprimer l'élément de la liste affichée
         removeButton.parentElement.remove();
 
-        // Réintégrer l'option dans le select à la bonne position (tri alphabétique)
+        // Réintégrer l'option dans le select à la bonne position
         const newOption = document.createElement("option");
         newOption.value = selectedValue;
         newOption.textContent = selectedValue;
