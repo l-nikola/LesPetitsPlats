@@ -29,21 +29,80 @@ function createSelectFilter(data, type, placeholder) {
     throw new Error(`Type ${type} unknown`);
   }
 
+  document.addEventListener("change", (event) => {
+  const select = event.target;
+  if (select.classList.contains("selectSection__groupSelect__select")) {
+    const selectedValue = select.value;
+    const selectedItemsDiv = select.closest(".select-container").querySelector(".selected-items");
+
+    // Vérifiez si une valeur a été sélectionnée
+    if (selectedValue) {
+      // Ajouter l'élément sélectionné avec une structure HTML
+      selectedItemsDiv.insertAdjacentHTML(
+        "beforeend",
+        `
+          <div class="selected-item">
+            ${selectedValue}
+            <button class="remove-button">X</button>
+          </div>
+        `
+      );
+
+      // Supprimez l'option sélectionnée du <select>
+      const optionToRemove = select.querySelector(`option[value="${selectedValue}"]`);
+      if (optionToRemove) {
+        optionToRemove.remove();
+      }
+
+      // Ajouter un gestionnaire d'événements pour le bouton de suppression
+      const removeButton = selectedItemsDiv.querySelector(
+        `.selected-item:last-child .remove-button`
+      );
+      removeButton.addEventListener("click", () => {
+        // Supprimer l'élément de la liste affichée
+        removeButton.parentElement.remove();
+
+        // Réintégrer l'option dans le select à la bonne position (tri alphabétique)
+        const newOption = document.createElement("option");
+        newOption.value = selectedValue;
+        newOption.textContent = selectedValue;
+
+        const options = Array.from(select.options);
+        const indexToInsert = options.findIndex((opt) => opt.textContent > selectedValue);
+        if (indexToInsert === -1) {
+          // Ajouter à la fin si aucune position n'est trouvée
+          select.appendChild(newOption);
+        } else {
+          // Insérer avant l'option trouvée
+          select.insertBefore(newOption, options[indexToInsert]);
+        }
+      });
+    }
+
+    // Réinitialiser la sélection
+    select.value = "";
+  }
+});
+
   return `
-      <select
-        class="selectSection__groupSelect__select"
-        name="${type}"
-      >
-        <option value="" hidden>${placeholder}</option>
-        ${filter
-          .map(
-            (data) => `
-              <option value="${data}">${data}</option>
-            `
-          )
-          .join("")}
-      </select>
-    `;
+  <div class="select-container">
+    <select
+      class="selectSection__groupSelect__select"
+      name="${type}"
+    >
+      <option value="" hidden>${placeholder}</option>
+      ${filter
+        .map(
+          (data) => `
+            <option value="${data}">${data}</option>
+          `
+        )
+        .join("")}
+    </select>
+    <div class="selected-items" data-type="${type}"></div>
+  </div>
+`;
+
 }
 
 // Fonctions pour générer les selects
