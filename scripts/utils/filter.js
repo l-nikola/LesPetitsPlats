@@ -88,15 +88,28 @@ function bindSelect() {
   });
 }
 
-// Fonctions pour générer les selects
-function generateAllIngredientsSelect(recipes) {
-  return createSelectFilter(recipes, "ingredients", "Ingrédients");
-}
+// Fonction générique pour générer les selects
+function generateSelects(recipes) {
+  const filters = [
+    {
+      key: "ingredients",
+      label: "Ingrédients",
+      containerId: "ingredientsSelectContainer",
+    },
+    {
+      key: "appliances",
+      label: "Appareils",
+      containerId: "appliancesSelectContainer",
+    },
+    {
+      key: "ustensils",
+      label: "Ustensiles",
+      containerId: "ustensilSelectContainer",
+    },
+  ];
 
-function generateAllAppliancesSelect(recipes) {
-  return createSelectFilter(recipes, "appliances", "Appareils");
-}
-
-function generateAllUstensilsSelect(recipes) {
-  return createSelectFilter(recipes, "ustensils", "Ustensiles");
+  filters.forEach((filter) => {
+    const selectHTML = createSelectFilter(recipes, filter.key, filter.label);
+    document.getElementById(filter.containerId).innerHTML = selectHTML;
+  });
 }

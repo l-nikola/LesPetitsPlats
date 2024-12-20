@@ -105,12 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Générer le compteur
   updateRecipeCounter(recipes.length);
   // Afficher les selects
-  document.getElementById("ingredientsSelectContainer").innerHTML =
-    generateAllIngredientsSelect(recipes);
-  document.getElementById("appliancesSelectContainer").innerHTML =
-    generateAllAppliancesSelect(recipes);
-  document.getElementById("ustensilSelectContainer").innerHTML =
-    generateAllUstensilsSelect(recipes);
+  generateSelects(recipes);
   // Gestion des tags
   bindSelect();
 });
