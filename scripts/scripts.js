@@ -111,4 +111,6 @@ document.addEventListener("DOMContentLoaded", () => {
     generateAllAppliancesSelect(recipes);
   document.getElementById("ustensilSelectContainer").innerHTML =
     generateAllUstensilsSelect(recipes);
+  // Gestion des tags
+  bindSelect();
 });

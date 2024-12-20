@@ -29,63 +29,6 @@ function createSelectFilter(data, type, placeholder) {
     throw new Error(`Type ${type} unknown`);
   }
 
-  document.addEventListener("change", (event) => {
-  const select = event.target;
-  if (select.classList.contains("selectSection__groupSelect__select")) {
-    const selectedValue = select.value;
-    const selectedItemsDiv = select.closest(".select-container").querySelector(".selected-items");
-
-    // Vérifiez si une valeur a été sélectionnée
-    if (selectedValue) {
-      // Ajouter l'élément sélectionné avec une structure HTML
-      selectedItemsDiv.insertAdjacentHTML(
-        "beforeend",
-        `
-          <div class="selectSection__groupSelect__select__selectedItem">
-            ${selectedValue}
-            <button class="selectSection__groupSelect__select__selectedItem__remove">
-              <i class="fa-solid fa-xmark"></i>
-            </button>
-          </div>
-        `
-      );
-
-      // Supprimez l'option sélectionnée du <select>
-      const optionToRemove = select.querySelector(`option[value="${selectedValue}"]`);
-      if (optionToRemove) {
-        optionToRemove.remove();
-      }
-
-      // Ajouter un gestionnaire d'événements pour le bouton de suppression
-      const removeButton = selectedItemsDiv.querySelector(
-        `.selectSection__groupSelect__select__selectedItem:last-child .selectSection__groupSelect__select__selectedItem__remove`
-      );
-      removeButton.addEventListener("click", () => {
-        // Supprimer l'élément de la liste affichée
-        removeButton.parentElement.remove();
-
-        // Réintégrer l'option dans le select à la bonne position
-        const newOption = document.createElement("option");
-        newOption.value = selectedValue;
-        newOption.textContent = selectedValue;
-
-        const options = Array.from(select.options);
-        const indexToInsert = options.findIndex((opt) => opt.textContent > selectedValue);
-        if (indexToInsert === -1) {
-          // Ajouter à la fin si aucune position n'est trouvée
-          select.appendChild(newOption);
-        } else {
-          // Insérer avant l'option trouvée
-          select.insertBefore(newOption, options[indexToInsert]);
-        }
-      });
-    }
-
-    // Réinitialiser la sélection
-    select.value = "";
-  }
-});
-
   return `
   <div class="select-container">
     <select
@@ -104,7 +47,45 @@ function createSelectFilter(data, type, placeholder) {
     <div class="selected-items" data-type="${type}"></div>
   </div>
 `;
+}
 
+function bindSelect() {
+  document.addEventListener("change", (event) => {
+    const select = event.target;
+    if (select.classList.contains("selectSection__groupSelect__select")) {
+      const selectedItemsDiv = select
+        .closest(".select-container")
+        .querySelector(".selected-items");
+
+      // Vérifiez si une valeur a été sélectionnée
+      if (select.value) {
+        // Ajouter l'élément sélectionné avec une structure HTML
+        selectedItemsDiv.insertAdjacentHTML(
+          "beforeend",
+          `
+          <div class="selectSection__groupSelect__select__selectedItem">
+            ${select.value}
+            <button class="selectSection__groupSelect__select__selectedItem__remove">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+        `
+        );
+
+        // Ajouter un gestionnaire d'événements pour le bouton de suppression
+        const removeButton = selectedItemsDiv.querySelector(
+          `.selectSection__groupSelect__select__selectedItem:last-child .selectSection__groupSelect__select__selectedItem__remove`
+        );
+        removeButton.addEventListener("click", () => {
+          // Supprimer l'élément de la liste affichée
+          removeButton.parentElement.remove();
+        });
+      }
+
+      // Réinitialiser la sélection
+      select.value = "";
+    }
+  });
 }
 
 // Fonctions pour générer les selects
