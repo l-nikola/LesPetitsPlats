@@ -11898,6 +11898,10 @@ textarea.form-control-lg {
   color: white;
 }
 
+.hidden {
+  display: none;
+}
+
 .selectSection {
   padding: 15px 70px;
 }
@@ -11905,7 +11909,7 @@ textarea.form-control-lg {
   display: flex;
   gap: 65px;
 }
-.selectSection__groupSelect__select {
+.selectSection__groupSelect__selectHeader {
   padding: 17px 16px;
   border-radius: 11px;
   font-family: Manrope;
@@ -11913,20 +11917,25 @@ textarea.form-control-lg {
   border: none;
   width: 195px;
   height: 56px;
+  cursor: pointer;
+  background: white;
 }
-.selectSection__groupSelect__select__selectedItem {
-  background-color: var(--yellow);
-  width: 195px;
-  height: 56px;
-  padding: 17px 17px;
-  border-radius: 10px;
-  margin-top: 10px;
-  display: flex;
-  justify-content: space-between;
+.selectSection__groupSelect__selectHeader__selectContainer {
+  position: relative;
 }
-.selectSection__groupSelect__select__selectedItem__remove {
-  background-color: var(--yellow);
-  border: none;
+.selectSection__groupSelect__selectHeader__selectContainer__selectBody {
+  background: #fff;
+  position: absolute;
+  z-index: 10;
+  border-radius: 11px;
+}
+.selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer {
+  max-height: 200px;
+  overflow-y: auto;
+}
+.selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer__selectOption {
+  padding: 8px;
+  cursor: pointer;
 }
 .selectSection__recipeNumber {
   font-family: Anton;

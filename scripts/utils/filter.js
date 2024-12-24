@@ -1,5 +1,5 @@
-// Fonction pour créer un select
-function createSelectFilter(data, type, placeholder) {
+// Fonction pour créer les selects
+function createCustomSelectFilter(data, type, placeholder) {
   let filter = [];
   if (type === "appliances") {
     filter = [
@@ -34,31 +34,38 @@ function createSelectFilter(data, type, placeholder) {
   }
 
   return `
-  <div class="select-container">
-    <select
-      class="selectSection__groupSelect__select"
-      name="${type}"
-    >
-      <option value="" hidden>${placeholder}</option>
-      ${filter
-        .map(
-          ([lowercase, original]) => `
-            <option value="${lowercase}">${original}</option>
-          `
-        )
-        .join("")}
-    </select>
-    <div class="selected-items" data-type="${type}"></div>
-  </div>
-`;
+    <div class="selectSection__groupSelect__selectHeader__selectContainer" data-type="${type}">
+      <div class="selectSection__groupSelect__selectHeader">
+        <span class="selectSection__groupSelect__selectHeader__label">${placeholder}</span>
+      </div>
+      <div class="selectSection__groupSelect__selectHeader__selectContainer__selectBody hidden">
+        <input 
+          type="text" 
+          aria-label="${placeholder}" 
+        />
+        <ul class="selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer">
+          ${filter
+            .map(
+              ([lowercase, original]) => `
+                <li class="selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer__selectOption" data-value="${lowercase}">
+                  ${original}
+                </li>
+              `
+            )
+            .join("")}
+        </ul>
+      </div>
+      <div class="selected-items" data-type="${type}"></div>
+    </div>
+  `;
 }
 
 function bindSelect() {
   document.addEventListener("change", (event) => {
     const select = event.target;
-    if (select.classList.contains("selectSection__groupSelect__select")) {
+    if (select.classList.contains("selectSection__groupSelect__selectHeader")) {
       const selectedItemsDiv = select
-        .closest(".select-container")
+        // .closest(".select-container")
         .querySelector(".selected-items");
 
       // Vérifiez si une valeur a été sélectionnée
@@ -97,7 +104,25 @@ function bindSelect() {
   });
 }
 
-// Fonction générique pour générer les selects
+function selectEvents() {
+  document
+    .querySelectorAll(
+      ".selectSection__groupSelect__selectHeader__selectContainer"
+    )
+    .forEach((container) => {
+      // Gérer l'ouverture/fermeture lors du clic sur le select
+      container
+        .querySelector(".selectSection__groupSelect__selectHeader")
+        .addEventListener("click", () => {
+          container
+            .querySelector(
+              ".selectSection__groupSelect__selectHeader__selectContainer__selectBody"
+            )
+            .classList.toggle("hidden");
+        });
+    });
+}
+
 function generateSelects(recipes) {
   const filters = [
     {
@@ -118,7 +143,14 @@ function generateSelects(recipes) {
   ];
 
   filters.forEach((filter) => {
-    const selectHTML = createSelectFilter(recipes, filter.key, filter.label);
+    const selectHTML = createCustomSelectFilter(
+      recipes,
+      filter.key,
+      filter.label
+    );
     document.getElementById(filter.containerId).innerHTML = selectHTML;
   });
+
+  // Configurer les événements pour les selects
+  selectEvents();
 }

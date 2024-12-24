@@ -1,3 +1,7 @@
+.hidden {
+  display: none;
+}
+
 // ********** Select **********
 .selectSection {
   padding: 15px 70px;
@@ -6,7 +10,7 @@
     display: flex;
     gap: 65px;
     // **** Select style ****
-    &__select {
+    &__selectHeader {
       padding: 17px 16px;
       border-radius: 11px;
       font-family: Manrope;
@@ -14,22 +18,45 @@
       border: none;
       width: 195px;
       height: 56px;
+      cursor: pointer;
+      background: white;
 
-      &__selectedItem {
-        background-color: var(--yellow);
-        width: 195px;
-        height: 56px;
-        padding: 17px 17px;
-        border-radius: 10px;
-        margin-top: 10px;
-        display: flex;
-        justify-content: space-between;
-        
-        &__remove {
-          background-color: var(--yellow);
-          border: none;
+      &__selectContainer {
+        position: relative;
+
+        &__selectBody {
+          background: #fff;
+          position: absolute;
+          z-index: 10;
+          border-radius: 11px;
+
+          &__selectOptionsContainer {
+            max-height: 200px;
+            overflow-y: auto;
+
+            &__selectOption {
+              padding: 8px;
+              cursor: pointer;
+            }
+          }
         }
       }
+
+      // &__selectedItem {
+      //   background-color: var(--yellow);
+      //   width: 195px;
+      //   height: 56px;
+      //   padding: 17px 17px;
+      //   border-radius: 10px;
+      //   margin-top: 10px;
+      //   display: flex;
+      //   justify-content: space-between;
+
+      //   &__remove {
+      //     background-color: var(--yellow);
+      //     border: none;
+      //   }
+      // }
     }
   }
   // **** Recipe number ****
