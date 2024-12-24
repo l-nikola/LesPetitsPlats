@@ -1,27 +1,31 @@
-// Fonction créer un select
+// Fonction pour créer un select
 function createSelectFilter(data, type, placeholder) {
   let filter = [];
   if (type === "appliances") {
     filter = [
-      ...new Set(data.map((recipe) => recipe.appliance.toLowerCase())),
+      ...new Map(
+        data.map((recipe) => [recipe.appliance.toLowerCase(), recipe.appliance])
+      ),
     ].sort();
   } else if (type === "ustensils") {
     filter = [
-      ...new Set(
+      ...new Map(
         data.flatMap((recipe) =>
-          recipe.ustensils.map((ustensil) =>
-            ustensil.toLowerCase().replace(/s$/, "")
-          )
+          recipe.ustensils.map((ustensil) => [
+            ustensil.toLowerCase().replace(/s$/, ""),
+            ustensil,
+          ])
         )
       ),
     ].sort();
   } else if (type === "ingredients") {
     filter = [
-      ...new Set(
+      ...new Map(
         data.flatMap((recipe) =>
-          recipe.ingredients.map((ingredient) =>
-            ingredient.ingredient.toLowerCase().replace(/s$/, "")
-          )
+          recipe.ingredients.map((ingredient) => [
+            ingredient.ingredient.toLowerCase().replace(/s$/, ""),
+            ingredient.ingredient,
+          ])
         )
       ),
     ].sort();
@@ -38,8 +42,8 @@ function createSelectFilter(data, type, placeholder) {
       <option value="" hidden>${placeholder}</option>
       ${filter
         .map(
-          (data) => `
-            <option value="${data}">${data}</option>
+          ([lowercase, original]) => `
+            <option value="${lowercase}">${original}</option>
           `
         )
         .join("")}
@@ -59,12 +63,17 @@ function bindSelect() {
 
       // Vérifiez si une valeur a été sélectionnée
       if (select.value) {
+        // Récupère la valeur non lowerCase
+        const originalValue = Array.from(select.options).find(
+          (option) => option.value === select.value
+        ).textContent;
+
         // Ajouter l'élément sélectionné avec une structure HTML
         selectedItemsDiv.insertAdjacentHTML(
           "beforeend",
           `
           <div class="selectSection__groupSelect__select__selectedItem">
-            ${select.value}
+            ${originalValue}
             <button class="selectSection__groupSelect__select__selectedItem__remove">
               <i class="fa-solid fa-xmark"></i>
             </button>
