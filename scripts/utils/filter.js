@@ -39,7 +39,7 @@ function createCustomSelectFilter(data, type, placeholder) {
         <span class="selectSection__groupSelect__selectHeader__label">${placeholder}</span>
         <i class="fa-solid fa-angle-down"></i>
       </div>
-      <div class="selectSection__groupSelect__selectHeader__selectContainer__selectBody hidden">
+      <div class="selectSection__groupSelect__selectHeader__selectContainer__selectBody selectSection__groupSelect__selectHeader__displayContainer">
         <input 
           type="text" 
           aria-label="${placeholder}" 
@@ -145,9 +145,13 @@ function selectEvents() {
 
       // Gérer l'ouverture/fermeture lors du clic sur le select
       header.addEventListener("click", () => {
-        body.classList.toggle("hidden");
+        body.classList.toggle(
+          "selectSection__groupSelect__selectHeader__displayContainer"
+        );
         // Gère les icônes
-        body.classList.contains("hidden")
+        body.classList.contains(
+          "selectSection__groupSelect__selectHeader__displayContainer"
+        )
           ? (icon.classList.remove("fa-angle-up"),
             icon.classList.add("fa-angle-down"))
           : (icon.classList.remove("fa-angle-down"),

@@ -11898,10 +11898,6 @@ textarea.form-control-lg {
   color: white;
 }
 
-.hidden {
-  display: none;
-}
-
 .selectSection {
   padding: 15px 70px;
 }
@@ -11922,6 +11918,9 @@ textarea.form-control-lg {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.selectSection__groupSelect__selectHeader__displayContainer {
+  display: none;
 }
 .selectSection__groupSelect__selectHeader__selectContainer {
   position: relative;
