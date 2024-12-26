@@ -11940,6 +11940,20 @@ textarea.form-control-lg {
   padding: 8px;
   cursor: pointer;
 }
+.selectSection__groupSelect__selectHeader__selectedItem {
+  background-color: var(--yellow);
+  width: 195px;
+  height: 56px;
+  padding: 17px 17px;
+  border-radius: 10px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.selectSection__groupSelect__selectHeader__selectedItem__remove {
+  background-color: var(--yellow);
+  border: none;
+}
 .selectSection__recipeNumber {
   font-family: Anton;
   font-size: 21px;

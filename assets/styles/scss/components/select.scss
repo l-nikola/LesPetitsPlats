@@ -45,21 +45,21 @@
         }
       }
 
-      // &__selectedItem {
-      //   background-color: var(--yellow);
-      //   width: 195px;
-      //   height: 56px;
-      //   padding: 17px 17px;
-      //   border-radius: 10px;
-      //   margin-top: 10px;
-      //   display: flex;
-      //   justify-content: space-between;
+      &__selectedItem {
+        background-color: var(--yellow);
+        width: 195px;
+        height: 56px;
+        padding: 17px 17px;
+        border-radius: 10px;
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
 
-      //   &__remove {
-      //     background-color: var(--yellow);
-      //     border: none;
-      //   }
-      // }
+        &__remove {
+          background-color: var(--yellow);
+          border: none;
+        }
+      }
     }
   }
   // **** Recipe number ****
