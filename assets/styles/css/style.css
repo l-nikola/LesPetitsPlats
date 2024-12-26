@@ -11919,6 +11919,9 @@ textarea.form-control-lg {
   height: 56px;
   cursor: pointer;
   background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .selectSection__groupSelect__selectHeader__selectContainer {
   position: relative;
@@ -11930,7 +11933,7 @@ textarea.form-control-lg {
   border-radius: 11px;
 }
 .selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer {
-  max-height: 200px;
+  max-height: 315px;
   overflow-y: auto;
 }
 .selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer__selectOption {

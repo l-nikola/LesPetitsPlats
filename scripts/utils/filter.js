@@ -37,6 +37,7 @@ function createCustomSelectFilter(data, type, placeholder) {
     <div class="selectSection__groupSelect__selectHeader__selectContainer" data-type="${type}">
       <div class="selectSection__groupSelect__selectHeader">
         <span class="selectSection__groupSelect__selectHeader__label">${placeholder}</span>
+        <i class="fa-solid fa-angle-down"></i>
       </div>
       <div class="selectSection__groupSelect__selectHeader__selectContainer__selectBody hidden">
         <input 
@@ -110,16 +111,24 @@ function selectEvents() {
       ".selectSection__groupSelect__selectHeader__selectContainer"
     )
     .forEach((container) => {
+      const header = container.querySelector(
+        ".selectSection__groupSelect__selectHeader"
+      );
+      const body = container.querySelector(
+        ".selectSection__groupSelect__selectHeader__selectContainer__selectBody"
+      );
+      const icon = header.querySelector("i");
+
       // Gérer l'ouverture/fermeture lors du clic sur le select
-      container
-        .querySelector(".selectSection__groupSelect__selectHeader")
-        .addEventListener("click", () => {
-          container
-            .querySelector(
-              ".selectSection__groupSelect__selectHeader__selectContainer__selectBody"
-            )
-            .classList.toggle("hidden");
-        });
+      header.addEventListener("click", () => {
+        body.classList.toggle("hidden");
+        // Gère les icônes
+        body.classList.contains("hidden")
+          ? (icon.classList.remove("fa-angle-up"),
+            icon.classList.add("fa-angle-down"))
+          : (icon.classList.remove("fa-angle-down"),
+            icon.classList.add("fa-angle-up"));
+      });
     });
 }
 

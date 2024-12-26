@@ -20,6 +20,9 @@
       height: 56px;
       cursor: pointer;
       background: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
 
       &__selectContainer {
         position: relative;
@@ -31,7 +34,7 @@
           border-radius: 11px;
 
           &__selectOptionsContainer {
-            max-height: 200px;
+            max-height: 315px;
             overflow-y: auto;
 
             &__selectOption {
