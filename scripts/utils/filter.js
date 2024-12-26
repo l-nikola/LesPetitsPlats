@@ -88,12 +88,12 @@ function bindSelect() {
       );
 
       // Ajouter un gestionnaire d'événements pour le bouton de suppression
-      selectedItemsDiv
+      selectedItemsDiv.lastElementChild
         .querySelector(
           ".selectSection__groupSelect__selectHeader__selectedItem__remove"
         )
         .addEventListener("click", () => {
-          selectedItemsDiv
+          selectedItemsDiv.lastElementChild
             .querySelector(
               ".selectSection__groupSelect__selectHeader__selectedItem__remove"
             )
