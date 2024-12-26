@@ -93,13 +93,25 @@ function bindSelect() {
           ".selectSection__groupSelect__selectHeader__selectedItem__remove"
         )
         .addEventListener("click", () => {
-          selectedItemsDiv.lastElementChild
-            .querySelector(
-              ".selectSection__groupSelect__selectHeader__selectedItem__remove"
-            )
-            .parentElement.remove();
+          // Supprimer l'élément sélectionné
+          selectedItemsDiv.lastElementChild.remove();
+
+          // Supprimer la classe 'selected' de l'option
+          option.classList.remove(
+            "selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer__selectedOption"
+          );
         });
     }
+
+    // Déplacer l'option sélectionnée tout en haut de la liste et lui donner une classe
+    option
+      .closest(
+        ".selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer"
+      )
+      .insertAdjacentElement("afterbegin", option);
+    option.classList.add(
+      "selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer__selectedOption"
+    );
   });
 }
 
