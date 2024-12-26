@@ -105,6 +105,20 @@ function bindSelect() {
   });
 }
 
+function initializeSelectSearch(container) {
+  container.querySelector("input").addEventListener("input", () => {
+    // Filtrer les options
+    Array.from(container.querySelectorAll("li")).map((option) => {
+      option.style.display = option.textContent
+        .toLowerCase()
+        .includes(container.querySelector("input").value.trim())
+        ? ""
+        : "none";
+      return option;
+    });
+  });
+}
+
 function selectEvents() {
   document
     .querySelectorAll(
@@ -129,6 +143,8 @@ function selectEvents() {
           : (icon.classList.remove("fa-angle-down"),
             icon.classList.add("fa-angle-up"));
       });
+
+      initializeSelectSearch(container);
     });
 }
 
