@@ -31,7 +31,16 @@
           background: #fff;
           position: absolute;
           z-index: 10;
-          border-radius: 11px;
+          // border-radius: 11px;
+          border-bottom-left-radius: 11px;
+          border-bottom-right-radius: 11px;
+
+          &__selectInput {
+            width: 163px;
+            height: 36px;
+            margin: 0 15px;
+            // border-color: var(--grey);
+          }
 
           &__selectOptionsContainer {
             max-height: 315px;

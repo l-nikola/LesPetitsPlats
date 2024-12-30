@@ -41,8 +41,8 @@ function createCustomSelectFilter(data, type, placeholder) {
       </div>
       <div class="selectSection__groupSelect__selectHeader__selectContainer__selectBody selectSection__groupSelect__selectHeader__displayContainer">
         <input 
+          class = "selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectInput"
           type="text" 
-          aria-label="${placeholder}" 
         />
         <ul class="selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer">
           ${filter

@@ -11929,7 +11929,13 @@ textarea.form-control-lg {
   background: #fff;
   position: absolute;
   z-index: 10;
-  border-radius: 11px;
+  border-bottom-left-radius: 11px;
+  border-bottom-right-radius: 11px;
+}
+.selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectInput {
+  width: 163px;
+  height: 36px;
+  margin: 0 15px;
 }
 .selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer {
   max-height: 315px;
