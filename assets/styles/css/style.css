@@ -11935,12 +11935,13 @@ textarea.form-control-lg {
 .selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectInput {
   width: 163px;
   height: 36px;
-  margin: 0 15px;
+  margin: 10px 15px;
   border: 1px solid var(--lightGrey);
 }
 .selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer {
   max-height: 315px;
   overflow-y: auto;
+  scrollbar-width: none;
 }
 .selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer__selectOption {
   padding: 8px;
@@ -11948,6 +11949,9 @@ textarea.form-control-lg {
 }
 .selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer__selectedOption {
   background-color: var(--yellow);
+}
+.selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer::-webkit-scrollbar {
+  display: none;
 }
 .selectSection__groupSelect__selectHeader__selectedItem {
   background-color: var(--yellow);

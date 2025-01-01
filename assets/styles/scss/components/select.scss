@@ -37,13 +37,14 @@
           &__selectInput {
             width: 163px;
             height: 36px;
-            margin: 0 15px;
+            margin: 10px 15px;
             border: 1px solid var(--lightGrey);
           }
 
           &__selectOptionsContainer {
             max-height: 315px;
             overflow-y: auto;
+            scrollbar-width: none; // Hide scroll bar on Firefox
 
             &__selectOption {
               padding: 8px;
@@ -53,6 +54,11 @@
             &__selectedOption {
               background-color: var(--yellow);
             }
+          }
+
+          // Hide scroll bar on Chrome
+          &__selectOptionsContainer::-webkit-scrollbar {
+            display: none;
           }
         }
       }
