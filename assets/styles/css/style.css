@@ -11936,6 +11936,7 @@ textarea.form-control-lg {
   width: 163px;
   height: 36px;
   margin: 0 15px;
+  border: 1px solid var(--lightGrey);
 }
 .selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer {
   max-height: 315px;
@@ -12036,6 +12037,7 @@ textarea.form-control-lg {
 :root {
   --yellow: #ffd15b;
   --grey: #7a7a7a;
+  --lightGrey: #c6c6c6;
 }
 
 main {
