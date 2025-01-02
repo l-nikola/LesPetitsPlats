@@ -27,6 +27,15 @@
       padding-left: 20px;
     }
 
+    // **** Cross button ****
+    &__crossBtn {
+      left: 830px;
+      top: 35px;
+      color: var(--grey);
+      position: absolute;
+      cursor: pointer;
+    }
+
     // **** Serch button ****
     &__searchBtn {
       width: 50px;

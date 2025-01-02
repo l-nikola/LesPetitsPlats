@@ -11884,6 +11884,13 @@ textarea.form-control-lg {
   border: none;
   padding-left: 20px;
 }
+.headerSection__inputContainer__crossBtn {
+  left: 830px;
+  top: 35px;
+  color: var(--grey);
+  position: absolute;
+  cursor: pointer;
+}
 .headerSection__inputContainer__searchBtn {
   width: 50px;
   height: 50px;

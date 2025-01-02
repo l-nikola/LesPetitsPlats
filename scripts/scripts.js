@@ -1,15 +1,50 @@
 // Fonction pour filtrer les recettes
-function filterRecipes(searchTerm) {
-  // Vérifier si le texte saisi correspond au titre, un ingrédient ou la description
-  return recipes.filter(
-    (recipe) =>
-      [recipe.name, recipe.description].some((field) =>
-        field.toLowerCase().includes(searchTerm.toLowerCase())
-      ) ||
-      recipe.ingredients.some((ingredient) =>
-        ingredient.ingredient.toLowerCase().includes(searchTerm.toLowerCase())
-      )
-  );
+function filterRecipes(searchBarId, crossIconClass, recipes) {
+  const searchBar = document.getElementById(searchBarId);
+  const crossIcon = document.querySelector(`.${crossIconClass}`);
+
+  // Masquer l'icône par défaut
+  crossIcon.style.display = "none";
+
+  // Gestion de la barre de recherche et de l'icône
+  searchBar.addEventListener("input", (event) => {
+    const searchTerm = event.target.value.trim();
+
+    // Afficher ou masquer l'icône
+    crossIcon.style.display = searchTerm.length > 0 ? "inline" : "none";
+
+    // Filtrer les recettes
+    const recipesToDisplay =
+      searchTerm.length >= 3
+        ? recipes.filter(
+            (recipe) =>
+              [recipe.name, recipe.description].some((field) =>
+                field.toLowerCase().includes(searchTerm.toLowerCase())
+              ) ||
+              recipe.ingredients.some((ingredient) =>
+                ingredient.ingredient
+                  .toLowerCase()
+                  .includes(searchTerm.toLowerCase())
+              )
+          )
+        : recipes;
+
+    // Afficher les recettes filtrées
+    displayRecipes(recipesToDisplay, searchTerm);
+
+    // Mettre à jour le compteur de recettes affichées
+    updateRecipeCounter(recipesToDisplay.length);
+  });
+
+  // Gestion du clic sur l'icône de croix
+  crossIcon.addEventListener("click", () => {
+    searchBar.value = ""; // Réinitialiser la barre de recherche
+    crossIcon.style.display = "none"; // Masquer l'icône
+
+    // Réafficher toutes les recettes
+    displayRecipes(recipes);
+    updateRecipeCounter(recipes.length);
+  });
 }
 
 // Fonction pour générer une carte de recette
@@ -100,6 +135,11 @@ document.getElementById("searchBar").addEventListener("input", (event) => {
 
 // Initialisation
 document.addEventListener("DOMContentLoaded", () => {
+  filterRecipes(
+    "searchBar",
+    "headerSection__inputContainer__crossBtn",
+    recipes
+  );
   // Afficher toutes les recettes au chargement
   displayRecipes(recipes);
   // Générer le compteur
