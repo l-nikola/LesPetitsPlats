@@ -45,7 +45,7 @@ function createCustomSelectFilter(data, type, placeholder) {
           type="text" 
         />
         <i
-          class="fa-solid fa-magnifying-glass "
+          class="fa-solid fa-magnifying-glass selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectInput__magnifyingGlass"
         ></i>
         <ul class="selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer">
           ${filter

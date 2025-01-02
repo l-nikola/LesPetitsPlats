@@ -11938,6 +11938,11 @@ textarea.form-control-lg {
   margin: 10px 15px;
   border: 1px solid var(--lightGrey);
 }
+.selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectInput__magnifyingGlass {
+  position: absolute;
+  color: var(--lightGrey);
+  margin: 20px -40px;
+}
 .selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer {
   max-height: 315px;
   overflow-y: auto;

@@ -39,6 +39,12 @@
             height: 36px;
             margin: 10px 15px;
             border: 1px solid var(--lightGrey);
+
+            &__magnifyingGlass {
+              position: absolute;
+              color: var(--lightGrey);
+              margin: 20px -40px;
+            }
           }
 
           &__selectOptionsContainer {
