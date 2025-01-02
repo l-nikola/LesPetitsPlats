@@ -50,7 +50,7 @@
           &__selectOptionsContainer {
             max-height: 315px;
             overflow-y: auto;
-            scrollbar-width: none; // Hide scroll bar on Firefox
+            scrollbar-width: none;
 
             &__selectOption {
               padding: 8px;
@@ -60,11 +60,6 @@
             &__selectedOption {
               background-color: var(--yellow);
             }
-          }
-
-          // Hide scroll bar on Chrome
-          &__selectOptionsContainer::-webkit-scrollbar {
-            display: none;
           }
         }
       }

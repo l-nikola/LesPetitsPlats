@@ -11955,9 +11955,6 @@ textarea.form-control-lg {
 .selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer__selectedOption {
   background-color: var(--yellow);
 }
-.selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer::-webkit-scrollbar {
-  display: none;
-}
 .selectSection__groupSelect__selectHeader__selectedItem {
   background-color: var(--yellow);
   width: 195px;
