@@ -3,17 +3,7 @@ function filterRecipes(searchBarId, crossIconClass, recipes) {
   const searchBar = document.getElementById(searchBarId);
   const crossIcon = document.querySelector(`.${crossIconClass}`);
 
-  // Masquer l'icône par défaut
-  crossIcon.style.display = "none";
-
-  // Gestion de la barre de recherche et de l'icône
-  searchBar.addEventListener("input", (event) => {
-    const searchTerm = event.target.value.trim();
-
-    // Afficher ou masquer l'icône
-    crossIcon.style.display = searchTerm.length > 0 ? "inline" : "none";
-
-    // Filtrer les recettes
+  const updateDisplay = (searchTerm) => {
     const recipesToDisplay =
       searchTerm.length >= 3
         ? recipes.filter(
@@ -29,21 +19,24 @@ function filterRecipes(searchBarId, crossIconClass, recipes) {
           )
         : recipes;
 
-    // Afficher les recettes filtrées
     displayRecipes(recipesToDisplay, searchTerm);
-
-    // Mettre à jour le compteur de recettes affichées
     updateRecipeCounter(recipesToDisplay.length);
+  };
+
+  // Masquer l'icône par défaut
+  crossIcon.style.display = "none";
+
+  // Gestion de la barre de recherche
+  searchBar.addEventListener("input", () => {
+    crossIcon.style.display = searchBar.value.trim() ? "inline" : "none";
+    updateDisplay(searchBar.value.trim());
   });
 
   // Gestion du clic sur l'icône de croix
   crossIcon.addEventListener("click", () => {
-    searchBar.value = ""; // Réinitialiser la barre de recherche
-    crossIcon.style.display = "none"; // Masquer l'icône
-
-    // Réafficher toutes les recettes
-    displayRecipes(recipes);
-    updateRecipeCounter(recipes.length);
+    searchBar.value = "";
+    crossIcon.style.display = "none";
+    updateDisplay("");
   });
 }
 
