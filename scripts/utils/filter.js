@@ -122,15 +122,39 @@ function bindSelect() {
 }
 
 function initializeSelectSearch(container) {
-  container.querySelector("input").addEventListener("input", () => {
+  const input = container.querySelector("input");
+  const crossIcon = container.querySelector(".fa-xmark");
+
+  // Masquer l'icône par défaut
+  crossIcon.style.display = "none";
+
+  const updateDisplay = () => {
+    const searchTerm = input.value.trim().toLowerCase();
+
+    // Afficher ou masquer l'icône en fonction du contenu de l'input
+    crossIcon.style.display = searchTerm ? "inline" : "none";
+
     // Filtrer les options
-    Array.from(container.querySelectorAll("li")).map((option) => {
+    Array.from(container.querySelectorAll("li")).forEach((option) => {
       option.style.display = option.textContent
         .toLowerCase()
-        .includes(container.querySelector("input").value.trim())
+        .includes(searchTerm)
         ? ""
         : "none";
-      return option;
+    });
+  };
+
+  // Gestion de la saisie dans l'input
+  input.addEventListener("input", updateDisplay);
+
+  // Gestion du clic sur l'icône de croix
+  crossIcon.addEventListener("click", () => {
+    input.value = "";
+    crossIcon.style.display = "none";
+
+    // Réafficher toutes les options
+    Array.from(container.querySelectorAll("li")).forEach((option) => {
+      option.style.display = "";
     });
   });
 }
