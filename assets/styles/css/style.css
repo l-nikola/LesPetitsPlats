@@ -11945,6 +11945,13 @@ textarea.form-control-lg {
   margin: 10px 15px;
   border: 1px solid var(--lightGrey);
 }
+.selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectInput__crossBtn {
+  left: 130px;
+  top: 27px;
+  color: var(--grey);
+  position: absolute;
+  cursor: pointer;
+}
 .selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectInput__magnifyingGlass {
   position: absolute;
   color: var(--lightGrey);
