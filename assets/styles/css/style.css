@@ -11898,11 +11898,18 @@ textarea.form-control-lg {
   top: 10px;
   border-radius: 10px;
   background: black;
+  border: none;
   position: absolute;
   z-index: 2;
 }
+.headerSection__inputContainer__searchBtn:hover {
+  background: var(--yellow);
+}
 .headerSection__inputContainer__searchBtn__magnifyingGlass {
   color: white;
+}
+.headerSection__inputContainer__searchBtn:hover .headerSection__inputContainer__searchBtn__magnifyingGlass {
+  color: black;
 }
 
 .selectSection {
