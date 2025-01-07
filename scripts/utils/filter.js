@@ -47,7 +47,7 @@ function createCustomSelectFilter(data, type, placeholder) {
       </div>
       <div class="selectSection__groupSelect__selectHeader__selectContainer__selectBody selectSection__groupSelect__selectHeader__displayContainer">
         <input 
-          class = "selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectInput"
+          class="selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectInput"
           type="text" 
         />
         <i
@@ -126,6 +126,7 @@ function filterRecipesByTags(recipes) {
   });
 }
 
+// Fonction pour gérer les événements des selects
 function bindSelect() {
   document.addEventListener("click", (event) => {
     const option = event.target.closest(
@@ -145,6 +146,7 @@ function bindSelect() {
         return; // Ne pas ajouter un tag déjà sélectionné
       }
 
+      // Ajouter la classe à l'option sélectionnée
       option.classList.add(
         "selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer__selectedOption"
       );
@@ -196,12 +198,14 @@ function bindSelect() {
             );
           }
 
+          // Mettre à jour l'affichage des recettes
           updateDisplayedRecipes(recipes);
         });
     }
   });
 }
 
+// Fonction pour initialiser la recherche dans les selects
 function initializeSelectSearch(container) {
   const input = container.querySelector("input");
   const crossIcon = container.querySelector(".fa-xmark");
@@ -240,6 +244,7 @@ function initializeSelectSearch(container) {
   });
 }
 
+// Fonction pour configurer les événements des selects
 function selectEvents() {
   document
     .querySelectorAll(
@@ -273,6 +278,7 @@ function selectEvents() {
     });
 }
 
+// Fonction pour générer les selects
 function generateSelects(recipes) {
   const filters = [
     {
