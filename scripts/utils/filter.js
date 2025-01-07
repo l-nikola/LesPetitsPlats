@@ -1,3 +1,9 @@
+const selectedTags = {
+  ingredients: new Set(),
+  appliances: new Set(),
+  ustensils: new Set(),
+};
+
 // Fonction pour créer les selects
 function createCustomSelectFilter(data, type, placeholder) {
   let filter = [];
@@ -67,24 +73,87 @@ function createCustomSelectFilter(data, type, placeholder) {
   `;
 }
 
+// Fonction pour mettre à jour les recettes affichées
+function updateDisplayedRecipes(recipes) {
+  const searchTerm = document.getElementById("searchBar").value.trim();
+  const filteredRecipes = filterRecipesByTags(
+    searchTerm.length >= 3
+      ? recipes.filter(
+          (recipe) =>
+            [recipe.name, recipe.description].some((field) =>
+              field.toLowerCase().includes(searchTerm.toLowerCase())
+            ) ||
+            recipe.ingredients.some((ingredient) =>
+              ingredient.ingredient
+                .toLowerCase()
+                .includes(searchTerm.toLowerCase())
+            )
+        )
+      : recipes
+  );
+
+  // Afficher les recettes filtrées
+  displayRecipes(filteredRecipes, searchTerm);
+
+  // Mettre à jour le compteur
+  updateRecipeCounter(filteredRecipes.length);
+}
+
+// Fonction pour filtrer les recettes en fonction des tags
+function filterRecipesByTags(recipes) {
+  return recipes.filter((recipe) => {
+    // Vérification des ingrédients
+    const hasIngredients = [...selectedTags.ingredients].every((tag) =>
+      recipe.ingredients.some((ingredient) =>
+        ingredient.ingredient.toLowerCase().includes(tag.toLowerCase())
+      )
+    );
+
+    // Vérification des appareils
+    const hasAppliance = [...selectedTags.appliances].every((tag) =>
+      recipe.appliance.toLowerCase().includes(tag.toLowerCase())
+    );
+
+    // Vérification des ustensiles
+    const hasUstensils = [...selectedTags.ustensils].every((tag) =>
+      recipe.ustensils.some((ustensil) =>
+        ustensil.toLowerCase().includes(tag.toLowerCase())
+      )
+    );
+
+    // Retourne true si toutes les conditions sont remplies
+    return hasIngredients && hasAppliance && hasUstensils;
+  });
+}
+
 function bindSelect() {
-  // Écoute des clics sur les options de toutes les listes
   document.addEventListener("click", (event) => {
     const option = event.target.closest(
       ".selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer__selectOption"
     );
 
-    // Vérifiez si une option a été cliquée
     if (option) {
-      const selectedItemsDiv = option
-        .closest(".selectSection__groupSelect__selectHeader__selectContainer")
-        .querySelector(".selected-items");
+      const container = option.closest(
+        ".selectSection__groupSelect__selectHeader__selectContainer"
+      );
+      const type = container.dataset.type;
 
-      // Ajouter l'élément sélectionné
+      const selectedItemsDiv = container.querySelector(".selected-items");
+
+      // Vérifie si le tag est déjà sélectionné
+      if (selectedTags[type].has(option.dataset.value)) {
+        return; // Ne pas ajouter un tag déjà sélectionné
+      }
+
+      option.classList.add(
+        "selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer__selectedOption"
+      );
+
+      // Ajouter le tag dans l'interface utilisateur
       selectedItemsDiv.insertAdjacentHTML(
         "beforeend",
         `
-        <div class="selectSection__groupSelect__selectHeader__selectedItem">
+        <div class="selectSection__groupSelect__selectHeader__selectedItem" data-type="${type}" data-value="${option.dataset.value}">
           ${option.textContent}
           <button class="selectSection__groupSelect__selectHeader__selectedItem__remove">
             <i class="fa-solid fa-xmark"></i>
@@ -93,31 +162,43 @@ function bindSelect() {
       `
       );
 
-      // Ajouter un gestionnaire d'événements pour le bouton de suppression
+      // Ajouter le tag à la structure
+      selectedTags[type].add(option.dataset.value);
+
+      // Mettre à jour l'affichage des recettes
+      updateDisplayedRecipes(recipes);
+
+      // Ajouter un gestionnaire pour le bouton de suppression
       selectedItemsDiv.lastElementChild
         .querySelector(
           ".selectSection__groupSelect__selectHeader__selectedItem__remove"
         )
-        .addEventListener("click", () => {
-          // Supprimer l'élément sélectionné
-          selectedItemsDiv.lastElementChild.remove();
-
-          // Supprimer la classe 'selected' de l'option
-          option.classList.remove(
-            "selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer__selectedOption"
+        .addEventListener("click", (event) => {
+          const tagElement = event.target.closest(
+            ".selectSection__groupSelect__selectHeader__selectedItem"
           );
+          const tagType = tagElement.dataset.type;
+          const tagValue = tagElement.dataset.value;
+
+          // Supprimer le tag de l'interface utilisateur
+          tagElement.remove();
+
+          // Retirer le tag de la structure
+          selectedTags[tagType].delete(tagValue);
+
+          // Supprimer la classe de l'option correspondante
+          const correspondingOption = container.querySelector(
+            `.selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer__selectOption[data-value="${tagValue}"]`
+          );
+          if (correspondingOption) {
+            correspondingOption.classList.remove(
+              "selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer__selectedOption"
+            );
+          }
+
+          updateDisplayedRecipes(recipes);
         });
     }
-
-    // Déplacer l'option sélectionnée tout en haut de la liste et lui donner une classe
-    option
-      .closest(
-        ".selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer"
-      )
-      .insertAdjacentElement("afterbegin", option);
-    option.classList.add(
-      "selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer__selectedOption"
-    );
   });
 }
 
