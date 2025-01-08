@@ -220,7 +220,7 @@ function initializeSelectSearch(container) {
     crossIcon.style.display = searchTerm ? "inline" : "none";
 
     // Filtrer les options
-    Array.from(container.querySelectorAll("li")).forEach((option) => {
+    Array.from(container.querySelectorAll("li")).map((option) => {
       option.style.display = option.textContent
         .toLowerCase()
         .includes(searchTerm)
@@ -238,7 +238,7 @@ function initializeSelectSearch(container) {
     crossIcon.style.display = "none";
 
     // Réafficher toutes les options
-    Array.from(container.querySelectorAll("li")).forEach((option) => {
+    Array.from(container.querySelectorAll("li")).map((option) => {
       option.style.display = "";
     });
   });
