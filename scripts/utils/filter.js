@@ -73,6 +73,53 @@ function createCustomSelectFilter(data, type, placeholder) {
   `;
 }
 
+// Fonction pour recalculer les options disponibles
+function updateAvailableOptions(recipes) {
+  const availableIngredients = new Set();
+  const availableAppliances = new Set();
+  const availableUstensils = new Set();
+
+  recipes.map((recipe) => {
+    recipe.ingredients.map((ingredient) => {
+      availableIngredients.add(ingredient.ingredient.toLowerCase());
+    });
+    availableAppliances.add(recipe.appliance.toLowerCase());
+    recipe.ustensils.map((ustensil) => {
+      availableUstensils.add(ustensil.toLowerCase());
+    });
+  });
+
+  // Mise à jour des options dans chaque champ
+  updateSelectOptions("ingredients", availableIngredients);
+  updateSelectOptions("appliances", availableAppliances);
+  updateSelectOptions("ustensils", availableUstensils);
+}
+
+// Fonction pour mettre à jour les options d'un select
+function updateSelectOptions(type, availableOptions) {
+  const container = document.querySelector(
+    `.selectSection__groupSelect__selectHeader__selectContainer[data-type="${type}"]`
+  );
+
+  const optionsContainer = container.querySelector(
+    ".selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer"
+  );
+
+  // Construire et insérer la liste des options
+  const optionsHTML = [...availableOptions]
+    .sort()
+    .map(
+      (option) => `
+        <li class="selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer__selectOption" data-value="${option}">
+          ${option.charAt(0).toUpperCase() + option.slice(1)}
+        </li>
+      `
+    )
+    .join("");
+
+  optionsContainer.innerHTML = optionsHTML;
+}
+
 // Fonction pour mettre à jour les recettes affichées
 function updateDisplayedRecipes(recipes) {
   const searchTerm = document.getElementById("searchBar").value.trim();
@@ -97,6 +144,9 @@ function updateDisplayedRecipes(recipes) {
 
   // Mettre à jour le compteur
   updateRecipeCounter(filteredRecipes.length);
+
+  // Mettre à jour les options disponibles dans les selects
+  updateAvailableOptions(filteredRecipes);
 }
 
 // Fonction pour filtrer les recettes en fonction des tags
