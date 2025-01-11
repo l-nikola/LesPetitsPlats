@@ -29,7 +29,7 @@ function createCustomSelectFilter(data, type, placeholder) {
       ...new Map(
         data.flatMap((recipe) =>
           recipe.ingredients.map((ingredient) => [
-            ingredient.ingredient.toLowerCase().replace(/s$/, ""),
+            ingredient.ingredient.toLowerCase().trim(),
             ingredient.ingredient,
           ])
         )
