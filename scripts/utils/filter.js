@@ -8,33 +8,35 @@ const selectedTags = {
 function createCustomSelectFilter(data, type, placeholder) {
   let filter = [];
   if (type === "appliances") {
-    filter = [
-      ...new Map(
-        data.map((recipe) => [recipe.appliance.toLowerCase(), recipe.appliance])
-      ),
-    ].sort();
+    filter = [...new Set(data.map((recipe) => recipe.appliance.toLowerCase()))]
+      .sort()
+      .map(
+        (appliance) => appliance.charAt(0).toUpperCase() + appliance.slice(1)
+      );
   } else if (type === "ustensils") {
     filter = [
-      ...new Map(
+      ...new Set(
         data.flatMap((recipe) =>
-          recipe.ustensils.map((ustensil) => [
-            ustensil.toLowerCase().replace(/s$/, ""),
-            ustensil,
-          ])
+          recipe.ustensils.map((ustensil) => ustensil.toLowerCase().trim())
         )
       ),
-    ].sort();
+    ]
+      .sort()
+      .map((ustensil) => ustensil.charAt(0).toUpperCase() + ustensil.slice(1));
   } else if (type === "ingredients") {
     filter = [
-      ...new Map(
+      ...new Set(
         data.flatMap((recipe) =>
-          recipe.ingredients.map((ingredient) => [
-            ingredient.ingredient.toLowerCase().trim(),
-            ingredient.ingredient,
-          ])
+          recipe.ingredients.map((ingredient) =>
+            ingredient.ingredient.toLowerCase().trim()
+          )
         )
       ),
-    ].sort();
+    ]
+      .sort()
+      .map(
+        (ingredient) => ingredient.charAt(0).toUpperCase() + ingredient.slice(1)
+      );
   } else {
     throw new Error(`Type ${type} unknown`);
   }
@@ -59,9 +61,9 @@ function createCustomSelectFilter(data, type, placeholder) {
         <ul class="selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer">
           ${filter
             .map(
-              ([lowercase, original]) => `
-                <li class="selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer__selectOption" data-value="${lowercase}">
-                  ${original}
+              (option) => `
+                <li class="selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer__selectOption" data-value="${option.toLowerCase()}">
+                  ${option}
                 </li>
               `
             )
