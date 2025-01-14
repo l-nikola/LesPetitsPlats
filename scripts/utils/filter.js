@@ -110,13 +110,18 @@ function updateSelectOptions(type, availableOptions) {
   // Construire et insérer la liste des options
   const optionsHTML = [...availableOptions]
     .sort()
-    .map(
-      (option) => `
-        <li class="selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer__selectOption" data-value="${option}">
+    .map((option) => {
+      return `
+        <li class="selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer__selectOption ${
+          // Si l'option est sélectionnée, on réapplique la classe
+          selectedTags[type].has(option)
+            ? "selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer__selectedOption"
+            : ""
+        }" data-value="${option}">
           ${option.charAt(0).toUpperCase() + option.slice(1)}
         </li>
-      `
-    )
+      `;
+    })
     .join("");
 
   optionsContainer.innerHTML = optionsHTML;
