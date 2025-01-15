@@ -72,3 +72,59 @@ function updateRecipeCounter(count) {
     count > 1 ? "s" : ""
   }`;
 }
+
+// Fonction pour mettre à jour les recettes affichées
+function updateDisplayedRecipes(recipes) {
+  const searchTerm = document.getElementById("searchBar").value.trim();
+  const filteredRecipes = filterRecipesByTags(
+    searchTerm.length >= 3
+      ? recipes.filter(
+          (recipe) =>
+            [recipe.name, recipe.description].some((field) =>
+              field.toLowerCase().includes(searchTerm.toLowerCase())
+            ) ||
+            recipe.ingredients.some((ingredient) =>
+              ingredient.ingredient
+                .toLowerCase()
+                .includes(searchTerm.toLowerCase())
+            )
+        )
+      : recipes
+  );
+
+  // Afficher les recettes filtrées
+  displayRecipes(filteredRecipes, searchTerm);
+
+  // Mettre à jour le compteur
+  updateRecipeCounter(filteredRecipes.length);
+
+  // Mettre à jour les options disponibles dans les selects
+  updateAvailableOptions(filteredRecipes);
+}
+
+// Fonction pour filtrer les recettes en fonction des tags
+function filterRecipesByTags(recipes) {
+  return recipes.filter((recipe) => {
+    // Vérification des ingrédients
+    const hasIngredients = [...selectedTags.ingredients].every((tag) =>
+      recipe.ingredients.some((ingredient) =>
+        ingredient.ingredient.toLowerCase().includes(tag.toLowerCase())
+      )
+    );
+
+    // Vérification des appareils
+    const hasAppliance = [...selectedTags.appliances].every((tag) =>
+      recipe.appliance.toLowerCase().includes(tag.toLowerCase())
+    );
+
+    // Vérification des ustensiles
+    const hasUstensils = [...selectedTags.ustensils].every((tag) =>
+      recipe.ustensils.some((ustensil) =>
+        ustensil.toLowerCase().includes(tag.toLowerCase())
+      )
+    );
+
+    // Retourne true si toutes les conditions sont remplies
+    return hasIngredients && hasAppliance && hasUstensils;
+  });
+}
