@@ -37,9 +37,10 @@ function generateRecipeCard({ image, time, name, description, ingredients }) {
 // Fonction pour afficher les cartes de recettes
 function displayRecipes(recipes, searchTerm = "") {
   const recipeContainer = document.getElementById("recipeContainer");
-  recipeContainer.innerHTML = recipes.length
-    ? recipes.map(generateRecipeCard).join("")
-    : `<p class="text-center">Aucune recette ne contient '${searchTerm}', vous pouvez chercher 'tarte aux pommes', 'poisson', etc..</p>`;
+  recipeContainer.innerHTML =
+    recipes && recipes.length
+      ? recipes.map(generateRecipeCard).join("")
+      : `<p class="text-center">Aucune recette ne contient '${searchTerm}', vous pouvez chercher 'tarte aux pommes', 'poisson', etc..</p>`;
 }
 
 // Fonction pour mettre à jour le compteur de recettes
