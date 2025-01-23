@@ -12,7 +12,7 @@ function bindSelect() {
 
         if (option) {
           const type = container.dataset.type;
-          const selectedItemsDiv = container.querySelector(".selected-items");
+          const tagsSection = document.querySelector(".tagsSection");
 
           // Vérifie si le tag est déjà sélectionné
           if (selectedTags[type].has(option.dataset.value)) {
@@ -25,7 +25,7 @@ function bindSelect() {
           );
 
           // Ajouter le tag dans l'interface utilisateur
-          selectedItemsDiv.insertAdjacentHTML(
+          tagsSection.insertAdjacentHTML(
             "beforeend",
             `
           <div class="selectSection__groupSelect__selectHeader__selectedItem" data-type="${type}" data-value="${option.dataset.value}">
@@ -44,7 +44,7 @@ function bindSelect() {
           updateDisplayedRecipes(recipes);
 
           // Ajouter un gestionnaire pour le bouton de suppression
-          selectedItemsDiv.lastElementChild
+          tagsSection.lastElementChild
             .querySelector(
               ".selectSection__groupSelect__selectHeader__selectedItem__remove"
             )
