@@ -6,40 +6,31 @@ const selectedTags = {
 
 // Fonction pour gérer les selects
 function manageSelectFilter(data, type, placeholder) {
-  let filter = [];
-  if (type === "appliances") {
-    filter = [...new Set(data.map((recipe) => recipe.appliance.toLowerCase()))]
-      .sort()
-      .map(
-        (appliance) => appliance.charAt(0).toUpperCase() + appliance.slice(1)
-      );
-  } else if (type === "ustensils") {
-    filter = [
-      ...new Set(
-        data.flatMap((recipe) =>
-          recipe.ustensils.map((ustensil) => ustensil.toLowerCase().trim())
-        )
+  const typeMapping = {
+    appliances: (recipe) => recipe.appliance.toLowerCase(),
+    ustensils: (recipe) =>
+      recipe.ustensils.map((ustensil) => ustensil.toLowerCase().trim()),
+    ingredients: (recipe) =>
+      recipe.ingredients.map((ingredient) =>
+        ingredient.ingredient.toLowerCase().trim()
       ),
-    ]
-      .sort()
-      .map((ustensil) => ustensil.charAt(0).toUpperCase() + ustensil.slice(1));
-  } else if (type === "ingredients") {
-    filter = [
-      ...new Set(
-        data.flatMap((recipe) =>
-          recipe.ingredients.map((ingredient) =>
-            ingredient.ingredient.toLowerCase().trim()
-          )
-        )
-      ),
-    ]
-      .sort()
-      .map(
-        (ingredient) => ingredient.charAt(0).toUpperCase() + ingredient.slice(1)
-      );
-  } else {
+  };
+
+  if (!typeMapping[type]) {
     throw new Error(`Type ${type} unknown`);
   }
+
+  const filter = [
+    ...new Set(
+      data.flatMap((recipe) =>
+        Array.isArray(typeMapping[type](recipe))
+          ? typeMapping[type](recipe)
+          : [typeMapping[type](recipe)]
+      )
+    ),
+  ]
+    .sort()
+    .map((item) => item.charAt(0).toUpperCase() + item.slice(1));
 
   const container = document.querySelector(
     `.selectSection__groupSelect__selectHeader__selectContainer[data-type="${type}"]`
