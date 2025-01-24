@@ -4,8 +4,8 @@ const selectedTags = {
   ustensils: new Set(),
 };
 
-// Fonction pour créer les selects
-function createCustomSelectFilter(data, type, placeholder) {
+// Fonction pour gérer les selects
+function manageSelectFilter(data, type, placeholder) {
   let filter = [];
   if (type === "appliances") {
     filter = [...new Set(data.map((recipe) => recipe.appliance.toLowerCase()))]
@@ -41,38 +41,64 @@ function createCustomSelectFilter(data, type, placeholder) {
     throw new Error(`Type ${type} unknown`);
   }
 
-  return `
-    <div class="selectSection__groupSelect__selectHeader__selectContainer" data-type="${type}">
-      <div class="selectSection__groupSelect__selectHeader">
-        <span class="selectSection__groupSelect__selectHeader__label">${placeholder}</span>
-        <i class="fa-solid fa-angle-down"></i>
-      </div>
-      <div class="selectSection__groupSelect__selectHeader__selectContainer__selectBody selectSection__groupSelect__selectHeader__displayContainer">
-        <input 
-          class="selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectInput"
-          type="text" 
-        />
-        <i
-            class="fa-solid fa-xmark fa-sm selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectInput__crossBtn"
+  const container = document.querySelector(
+    `.selectSection__groupSelect__selectHeader__selectContainer[data-type="${type}"]`
+  );
+
+  if (!container) {
+    return `
+      <div class="selectSection__groupSelect__selectHeader__selectContainer" data-type="${type}">
+        <div class="selectSection__groupSelect__selectHeader">
+          <span class="selectSection__groupSelect__selectHeader__label">${placeholder}</span>
+          <i class="fa-solid fa-angle-down"></i>
+        </div>
+        <div class="selectSection__groupSelect__selectHeader__selectContainer__selectBody selectSection__groupSelect__selectHeader__displayContainer">
+          <input 
+            class="selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectInput"
+            type="text" 
+          />
+          <i
+              class="fa-solid fa-xmark fa-sm selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectInput__crossBtn"
+            ></i>
+          <i
+            class="fa-solid fa-magnifying-glass selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectInput__magnifyingGlass"
           ></i>
-        <i
-          class="fa-solid fa-magnifying-glass selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectInput__magnifyingGlass"
-        ></i>
-        <ul class="selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer">
-          ${filter
-            .map(
-              (option) => `
-                <li class="selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer__selectOption" data-value="${option.toLowerCase()}">
-                  ${option}
-                </li>
-              `
-            )
-            .join("")}
-        </ul>
+          <ul class="selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer">
+            ${filter
+              .map(
+                (option) => `
+                  <li class="selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer__selectOption" data-value="${option.toLowerCase()}">
+                    ${option}
+                  </li>
+                `
+              )
+              .join("")}
+          </ul>
+        </div>
+        <div class="selected-items" data-type="${type}"></div>
       </div>
-      <div class="selected-items" data-type="${type}"></div>
-    </div>
-  `;
+    `;
+  } else {
+    const optionsContainer = container.querySelector(
+      ".selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer"
+    );
+
+    const optionsHTML = filter
+      .map((option) => {
+        return `
+          <li class="selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer__selectOption ${
+            selectedTags[type].has(option.toLowerCase())
+              ? "selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer__selectedOption"
+              : ""
+          }" data-value="${option.toLowerCase()}">
+            ${option}
+          </li>
+        `;
+      })
+      .join("");
+
+    optionsContainer.innerHTML = optionsHTML;
+  }
 }
 
 // Fonction pour recalculer les options disponibles
@@ -92,39 +118,9 @@ function updateAvailableOptions(recipes) {
   });
 
   // Mise à jour des options dans chaque champ
-  updateSelectOptions("ingredients", availableIngredients);
-  updateSelectOptions("appliances", availableAppliances);
-  updateSelectOptions("ustensils", availableUstensils);
-}
-
-// Fonction pour mettre à jour les options d'un select
-function updateSelectOptions(type, availableOptions) {
-  const container = document.querySelector(
-    `.selectSection__groupSelect__selectHeader__selectContainer[data-type="${type}"]`
-  );
-
-  const optionsContainer = container.querySelector(
-    ".selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer"
-  );
-
-  // Construire et insérer la liste des options
-  const optionsHTML = [...availableOptions]
-    .sort()
-    .map((option) => {
-      return `
-        <li class="selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer__selectOption ${
-          // Si l'option est sélectionnée, on réapplique la classe
-          selectedTags[type].has(option)
-            ? "selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer__selectedOption"
-            : ""
-        }" data-value="${option}">
-          ${option.charAt(0).toUpperCase() + option.slice(1)}
-        </li>
-      `;
-    })
-    .join("");
-
-  optionsContainer.innerHTML = optionsHTML;
+  manageSelectFilter(recipes, "ingredients", "Ingrédients");
+  manageSelectFilter(recipes, "appliances", "Appareils");
+  manageSelectFilter(recipes, "ustensils", "Ustensiles");
 }
 
 // Fonction pour initialiser la recherche dans les selects
@@ -221,11 +217,8 @@ function generateSelects(recipes) {
   ];
 
   filters.map((filter) => {
-    const selectHTML = createCustomSelectFilter(
-      recipes,
-      filter.key,
-      filter.label
-    );
+    const selectHTML = manageSelectFilter(recipes, filter.key, filter.label);
+
     document.getElementById(filter.containerId).innerHTML = selectHTML;
   });
 
