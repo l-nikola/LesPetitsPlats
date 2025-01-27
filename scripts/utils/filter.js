@@ -33,32 +33,32 @@ function manageSelectFilter(data, type, placeholder) {
     .map((item) => item.charAt(0).toUpperCase() + item.slice(1));
 
   const container = document.querySelector(
-    `.selectSection__groupSelect__selectHeader__selectContainer[data-type="${type}"]`
+    `.selectSection__group__header__container[data-type="${type}"]`
   );
 
   if (!container) {
     return `
-      <div class="selectSection__groupSelect__selectHeader__selectContainer" data-type="${type}">
-        <div class="selectSection__groupSelect__selectHeader">
-          <span class="selectSection__groupSelect__selectHeader__label">${placeholder}</span>
+      <div class="selectSection__group__header__container" data-type="${type}">
+        <div class="selectSection__group__header">
+          <span class="selectSection__group__header__label">${placeholder}</span>
           <i class="fa-solid fa-angle-down"></i>
         </div>
-        <div class="selectSection__groupSelect__selectHeader__selectContainer__selectBody selectSection__groupSelect__selectHeader__displayContainer">
+        <div class="selectSection__group__header__container__body selectSection__group__header__displayContainer">
           <input 
-            class="selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectInput"
+            class="selectSection__group__header__container__body__input"
             type="text" 
           />
           <i
-              class="fa-solid fa-xmark fa-sm selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectInput__crossBtn"
+              class="fa-solid fa-xmark fa-sm selectSection__group__header__container__body__input__crossBtn"
             ></i>
           <i
-            class="fa-solid fa-magnifying-glass selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectInput__magnifyingGlass"
+            class="fa-solid fa-magnifying-glass selectSection__group__header__container__body__input__magnifyingGlass"
           ></i>
-          <ul class="selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer">
+          <ul class="selectSection__group__header__container__body__optionsContainer">
             ${filter
               .map(
                 (option) => `
-                  <li class="selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer__selectOption" data-value="${option.toLowerCase()}">
+                  <li class="selectSection__group__header__container__body__optionsContainer__option" data-value="${option.toLowerCase()}">
                     ${option}
                   </li>
                 `
@@ -71,15 +71,15 @@ function manageSelectFilter(data, type, placeholder) {
     `;
   } else {
     const optionsContainer = container.querySelector(
-      ".selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer"
+      ".selectSection__group__header__container__body__optionsContainer"
     );
 
     const optionsHTML = filter
       .map((option) => {
         return `
-          <li class="selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer__selectOption ${
+          <li class="selectSection__group__header__container__body__optionsContainer__option ${
             selectedTags[type].has(option.toLowerCase())
-              ? "selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer__selectedOption"
+              ? "selectSection__group__header__container__body__optionsContainer__selected"
               : ""
           }" data-value="${option.toLowerCase()}">
             ${option}
@@ -156,26 +156,20 @@ function initializeSelectSearch(container) {
 // Fonction pour configurer les événements des selects
 function selectEvents() {
   document
-    .querySelectorAll(
-      ".selectSection__groupSelect__selectHeader__selectContainer"
-    )
+    .querySelectorAll(".selectSection__group__header__container")
     .forEach((container) => {
-      const header = container.querySelector(
-        ".selectSection__groupSelect__selectHeader"
-      );
+      const header = container.querySelector(".selectSection__group__header");
       const body = container.querySelector(
-        ".selectSection__groupSelect__selectHeader__selectContainer__selectBody"
+        ".selectSection__group__header__container__body"
       );
       const icon = header.querySelector("i");
 
       // Gérer l'ouverture/fermeture lors du clic sur le select
       header.addEventListener("click", () => {
-        body.classList.toggle(
-          "selectSection__groupSelect__selectHeader__displayContainer"
-        );
+        body.classList.toggle("selectSection__group__header__displayContainer");
         // Gère les icônes
         body.classList.contains(
-          "selectSection__groupSelect__selectHeader__displayContainer"
+          "selectSection__group__header__displayContainer"
         )
           ? (icon.classList.remove("fa-angle-up"),
             icon.classList.add("fa-angle-down"))

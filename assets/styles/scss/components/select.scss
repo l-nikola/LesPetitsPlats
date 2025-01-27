@@ -2,11 +2,11 @@
 .selectSection {
   padding: 15px 70px;
   // **** Group select ****
-  &__groupSelect {
+  &__group {
     display: flex;
     gap: 65px;
     // **** Select style ****
-    &__selectHeader {
+    &__header {
       padding: 17px 16px;
       border-radius: 11px;
       font-family: Manrope;
@@ -24,17 +24,17 @@
         display: none;
       }
 
-      &__selectContainer {
+      &__container {
         position: relative;
 
-        &__selectBody {
+        &__body {
           background: #fff;
           position: absolute;
           z-index: 10;
           border-bottom-left-radius: 11px;
           border-bottom-right-radius: 11px;
 
-          &__selectInput {
+          &__input {
             width: 163px;
             height: 36px;
             margin: 10px 15px;
@@ -55,17 +55,17 @@
             }
           }
 
-          &__selectOptionsContainer {
+          &__optionsContainer {
             max-height: 315px;
             overflow-y: auto;
             scrollbar-width: none;
 
-            &__selectOption {
+            &__option {
               padding: 8px;
               cursor: pointer;
             }
 
-            &__selectedOption {
+            &__selected {
               background-color: var(--yellow);
             }
           }

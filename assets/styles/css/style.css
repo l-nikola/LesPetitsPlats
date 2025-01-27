@@ -11915,11 +11915,11 @@ textarea.form-control-lg {
 .selectSection {
   padding: 15px 70px;
 }
-.selectSection__groupSelect {
+.selectSection__group {
   display: flex;
   gap: 65px;
 }
-.selectSection__groupSelect__selectHeader {
+.selectSection__group__header {
   padding: 17px 16px;
   border-radius: 11px;
   font-family: Manrope;
@@ -11933,50 +11933,50 @@ textarea.form-control-lg {
   justify-content: space-between;
   align-items: center;
 }
-.selectSection__groupSelect__selectHeader__displayContainer {
+.selectSection__group__header__displayContainer {
   display: none;
 }
-.selectSection__groupSelect__selectHeader__selectContainer {
+.selectSection__group__header__container {
   position: relative;
 }
-.selectSection__groupSelect__selectHeader__selectContainer__selectBody {
+.selectSection__group__header__container__body {
   background: #fff;
   position: absolute;
   z-index: 10;
   border-bottom-left-radius: 11px;
   border-bottom-right-radius: 11px;
 }
-.selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectInput {
+.selectSection__group__header__container__body__input {
   width: 163px;
   height: 36px;
   margin: 10px 15px;
   border: 1px solid var(--lightGrey);
 }
-.selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectInput__crossBtn {
+.selectSection__group__header__container__body__input__crossBtn {
   left: 130px;
   top: 27px;
   color: var(--grey);
   position: absolute;
   cursor: pointer;
 }
-.selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectInput__magnifyingGlass {
+.selectSection__group__header__container__body__input__magnifyingGlass {
   position: absolute;
   color: var(--lightGrey);
   margin: 20px -40px;
 }
-.selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer {
+.selectSection__group__header__container__body__optionsContainer {
   max-height: 315px;
   overflow-y: auto;
   scrollbar-width: none;
 }
-.selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer__selectOption {
+.selectSection__group__header__container__body__optionsContainer__option {
   padding: 8px;
   cursor: pointer;
 }
-.selectSection__groupSelect__selectHeader__selectContainer__selectBody__selectOptionsContainer__selectedOption {
+.selectSection__group__header__container__body__optionsContainer__selected {
   background-color: var(--yellow);
 }
-.selectSection__groupSelect__selectHeader__selectedItem {
+.selectSection__group__header__selectedItem {
   background-color: var(--yellow);
   width: 195px;
   height: 56px;
@@ -11986,7 +11986,7 @@ textarea.form-control-lg {
   display: flex;
   justify-content: space-between;
 }
-.selectSection__groupSelect__selectHeader__selectedItem__remove {
+.selectSection__group__header__selectedItem__remove {
   background-color: var(--yellow);
   border: none;
 }
