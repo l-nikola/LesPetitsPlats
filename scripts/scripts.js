@@ -42,7 +42,7 @@ function filterRecipes(searchBarId, crossIconClass, recipes) {
 
     // Gestion du la soumission du formulaire
     document
-      .querySelector(".headerSection__inputContainer__searchBtn")
+      .querySelector(".headerSection__container__searchBtn")
       .addEventListener("click", (event) => {
         event.preventDefault(); // Empêcher le rechargement de la page
         const searchTerm = searchBar.value.trim();
@@ -55,11 +55,7 @@ function filterRecipes(searchBarId, crossIconClass, recipes) {
 
 // Initialisation
 document.addEventListener("DOMContentLoaded", () => {
-  filterRecipes(
-    "searchBar",
-    "headerSection__inputContainer__crossBtn",
-    recipes
-  );
+  filterRecipes("searchBar", "headerSection__container__crossBtn", recipes);
   // Afficher toutes les recettes au chargement
   displayRecipes(recipes);
   // Générer le compteur

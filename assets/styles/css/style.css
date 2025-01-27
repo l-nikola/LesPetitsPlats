@@ -11870,13 +11870,13 @@ textarea.form-control-lg {
   top: 300px;
   position: absolute;
 }
-.headerSection__inputContainer {
+.headerSection__container {
   position: absolute;
   top: 460px;
   width: 954px;
   display: flex;
 }
-.headerSection__inputContainer__input {
+.headerSection__container__input {
   width: 100%;
   height: 72px;
   border-radius: 11px;
@@ -11884,14 +11884,14 @@ textarea.form-control-lg {
   border: none;
   padding-left: 20px;
 }
-.headerSection__inputContainer__crossBtn {
+.headerSection__container__crossBtn {
   left: 830px;
   top: 35px;
   color: var(--grey);
   position: absolute;
   cursor: pointer;
 }
-.headerSection__inputContainer__searchBtn {
+.headerSection__container__searchBtn {
   width: 50px;
   height: 50px;
   left: 880px;
@@ -11902,13 +11902,13 @@ textarea.form-control-lg {
   position: absolute;
   z-index: 2;
 }
-.headerSection__inputContainer__searchBtn:hover {
+.headerSection__container__searchBtn:hover {
   background: var(--yellow);
 }
-.headerSection__inputContainer__searchBtn__magnifyingGlass {
+.headerSection__container__searchBtn__magnifyingGlass {
   color: white;
 }
-.headerSection__inputContainer__searchBtn:hover .headerSection__inputContainer__searchBtn__magnifyingGlass {
+.headerSection__container__searchBtn:hover .headerSection__container__searchBtn__magnifyingGlass {
   color: black;
 }
 
