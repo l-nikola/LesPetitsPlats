@@ -36,59 +36,54 @@ function manageSelectFilter(data, type, placeholder) {
     `.selectSection__group__header__container[data-type="${type}"]`
   );
 
-  if (!container) {
-    return `
-      <div class="selectSection__group__header__container" data-type="${type}">
-        <div class="selectSection__group__header">
-          <span class="selectSection__group__header__label">${placeholder}</span>
-          <i class="fa-solid fa-angle-down"></i>
-        </div>
-        <div class="selectSection__group__header__container__body selectSection__group__header__displayContainer">
-          <input 
-            class="selectSection__group__header__container__body__input"
-            type="text" 
-          />
-          <i
-              class="fa-solid fa-xmark fa-sm selectSection__group__header__container__body__input__crossBtn"
-            ></i>
-          <i
-            class="fa-solid fa-magnifying-glass selectSection__group__header__container__body__input__magnifyingGlass"
-          ></i>
-          <ul class="selectSection__group__header__container__body__optionsContainer">
-            ${filter
-              .map(
-                (option) => `
-                  <li class="selectSection__group__header__container__body__optionsContainer__option" data-value="${option.toLowerCase()}">
-                    ${option}
-                  </li>
-                `
-              )
-              .join("")}
-          </ul>
-        </div>
-        <div class="selected-items" data-type="${type}"></div>
+  const optionsHTML = filter
+    .map((option) => {
+      return `
+        <li class="selectSection__group__header__container__body__optionsContainer__option ${
+          selectedTags[type].has(option.toLowerCase())
+            ? "selectSection__group__header__container__body__optionsContainer__selected"
+            : ""
+        }" data-value="${option.toLowerCase()}">
+          ${option}
+        </li>
+      `;
+    })
+    .join("");
+
+  const containerHTML = `
+    <div class="selectSection__group__header__container" data-type="${type}">
+      <div class="selectSection__group__header">
+        <span class="selectSection__group__header__label">${placeholder}</span>
+        <i class="fa-solid fa-angle-down"></i>
       </div>
-    `;
+      <div class="selectSection__group__header__container__body selectSection__group__header__displayContainer">
+        <input 
+          class="selectSection__group__header__container__body__input"
+          type="text" 
+        />
+        <i
+            class="fa-solid fa-xmark fa-sm selectSection__group__header__container__body__input__crossBtn"
+          ></i>
+        <i
+          class="fa-solid fa-magnifying-glass selectSection__group__header__container__body__input__magnifyingGlass"
+        ></i>
+        <ul class="selectSection__group__header__container__body__optionsContainer">
+          ${optionsHTML}
+        </ul>
+      </div>
+      <div class="selected-items" data-type="${type}"></div>
+    </div>
+  `;
+
+  if (!container) {
+    return containerHTML;
   } else {
     const optionsContainer = container.querySelector(
       ".selectSection__group__header__container__body__optionsContainer"
     );
 
-    const optionsHTML = filter
-      .map((option) => {
-        return `
-          <li class="selectSection__group__header__container__body__optionsContainer__option ${
-            selectedTags[type].has(option.toLowerCase())
-              ? "selectSection__group__header__container__body__optionsContainer__selected"
-              : ""
-          }" data-value="${option.toLowerCase()}">
-            ${option}
-          </li>
-        `;
-      })
-      .join("");
-
     optionsContainer.innerHTML = optionsHTML;
+    return containerHTML;
   }
 }
 
