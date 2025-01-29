@@ -83,6 +83,17 @@ function manageSelectFilter(data, type, placeholder) {
     );
 
     optionsContainer.innerHTML = optionsHTML;
+
+    // Déplacer les options sélectionnées en haut de la liste
+    selectedTags[type].forEach((value) => {
+      const selectedOption = optionsContainer.querySelector(
+        `.selectSection__group__header__container__body__optionsContainer__option[data-value="${value}"]`
+      );
+      if (selectedOption) {
+        optionsContainer.prepend(selectedOption);
+      }
+    });
+
     return containerHTML;
   }
 }
