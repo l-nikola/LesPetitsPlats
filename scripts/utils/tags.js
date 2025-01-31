@@ -1,14 +1,16 @@
-// Fonction pour gérer les événements des selects
-function bindSelect() {
+// Fonction pour gérer les événements des selects et des options
+function bindSelectAndOptions() {
   document
     .querySelectorAll(".selectSection__group__header__container")
     .forEach((container) => {
-      container.addEventListener("click", (event) => {
-        const option = event.target.closest(
-          ".selectSection__group__header__container__body__optionsContainer__option"
-        );
-
-        if (option) {
+      // Récupérer les elements li
+      const options = container.querySelectorAll(
+        ".selectSection__group__header__container__body__optionsContainer__option"
+      );
+      // Boucler sur les elements li
+      options.forEach((option) => {
+        // Ecouter le click
+        option.addEventListener("click", () => {
           const type = container.dataset.type;
           const tagsSection = document.querySelector(".tagsSection");
 
@@ -26,13 +28,13 @@ function bindSelect() {
           tagsSection.insertAdjacentHTML(
             "beforeend",
             `
-          <div class="selectSection__group__header__selectedItem" data-type="${type}" data-value="${option.dataset.value}">
-            ${option.textContent}
-            <button class="selectSection__group__header__selectedItem__remove">
-              <i class="fa-solid fa-xmark"></i>
-            </button>
-          </div>
-        `
+            <div class="selectSection__group__header__selectedItem" data-type="${type}" data-value="${option.dataset.value}">
+              ${option.textContent}
+              <button class="selectSection__group__header__selectedItem__remove">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+          `
           );
 
           // Ajouter le tag à la structure
@@ -72,7 +74,7 @@ function bindSelect() {
               // Mettre à jour l'affichage des recettes
               updateDisplayedRecipes(recipes);
             });
-        }
+        });
       });
     });
 }

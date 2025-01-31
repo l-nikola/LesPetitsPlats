@@ -93,6 +93,9 @@ function manageSelectFilter(data, type, placeholder) {
   `;
     document.getElementById(type).innerHTML = containerHTML;
   }
+
+  // Ecouter le clic sur les options
+  bindSelectAndOptions();
 }
 
 // Fonction pour recalculer les options disponibles

@@ -62,6 +62,4 @@ document.addEventListener("DOMContentLoaded", () => {
   updateRecipeCounter(recipes.length);
   // Afficher les selects
   generateSelects(recipes);
-  // Gestion des tags
-  bindSelect();
 });
