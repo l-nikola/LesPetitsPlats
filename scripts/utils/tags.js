@@ -4,9 +4,7 @@ function bindSelectAndOptions() {
     .querySelectorAll(".selectSection__group__header__container")
     .forEach((container) => {
       // Récupérer les elements li
-      const options = container.querySelectorAll(
-        ".selectSection__group__header__container__body__optionsContainer__option"
-      );
+      const options = container.querySelectorAll(".option");
       // Boucler sur les elements li
       options.forEach((option) => {
         // Ecouter le click
@@ -30,7 +28,7 @@ function bindSelectAndOptions() {
             `
             <div class="selectSection__group__header__selectedItem" data-type="${type}" data-value="${option.dataset.value}">
               ${option.textContent}
-              <button class="selectSection__group__header__selectedItem__remove">
+              <button class="remove">
                 <i class="fa-solid fa-xmark"></i>
               </button>
             </div>
@@ -45,9 +43,7 @@ function bindSelectAndOptions() {
 
           // Ajouter un gestionnaire pour le bouton de suppression
           tagsSection.lastElementChild
-            .querySelector(
-              ".selectSection__group__header__selectedItem__remove"
-            )
+            .querySelector(".remove")
             .addEventListener("click", (event) => {
               const tagElement = event.target.closest(
                 ".selectSection__group__header__selectedItem"
@@ -63,7 +59,7 @@ function bindSelectAndOptions() {
 
               // Supprimer la classe de l'option correspondante
               const correspondingOption = container.querySelector(
-                `.selectSection__group__header__container__body__optionsContainer__option[data-value="${tagValue}"]`
+                `.option[data-value="${tagValue}"]`
               );
               if (correspondingOption) {
                 correspondingOption.classList.remove(
@@ -112,7 +108,7 @@ function addTag(value, type) {
     `
     <div class="selectSection__group__header__selectedItem" data-type="${type}" data-value="${value.toLowerCase()}">
       ${value}
-      <button class="selectSection__group__header__selectedItem__remove">
+      <button class="remove">
         <i class="fa-solid fa-xmark"></i>
       </button>
     </div>
@@ -121,7 +117,7 @@ function addTag(value, type) {
 
   // Ajouter un gestionnaire pour le bouton de suppression
   selectedItemsDiv.lastElementChild
-    .querySelector(".selectSection__group__header__selectedItem__remove")
+    .querySelector(".remove")
     .addEventListener("click", (event) => {
       const tagElement = event.target.closest(
         ".selectSection__group__header__selectedItem"

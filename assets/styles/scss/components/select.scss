@@ -34,19 +34,11 @@
           border-bottom-left-radius: 11px;
           border-bottom-right-radius: 11px;
 
-          &__input {
+          input {
             width: 163px;
             height: 36px;
             margin: 10px 15px;
             border: 1px solid var(--lightGrey);
-
-            &__crossBtn {
-              left: 130px;
-              top: 27px;
-              color: var(--grey);
-              position: absolute;
-              cursor: pointer;
-            }
 
             &__magnifyingGlass {
               position: absolute;
@@ -55,12 +47,20 @@
             }
           }
 
+          i.fa-sm {
+            left: 130px;
+            top: 27px;
+            color: var(--grey);
+            position: absolute;
+            cursor: pointer;
+          }
+
           &__optionsContainer {
             max-height: 315px;
             overflow-y: auto;
             scrollbar-width: none;
 
-            &__option {
+            li {
               padding: 8px;
               cursor: pointer;
             }
@@ -82,7 +82,7 @@
         display: flex;
         justify-content: space-between;
 
-        &__remove {
+        button {
           background-color: var(--yellow);
           border: none;
         }

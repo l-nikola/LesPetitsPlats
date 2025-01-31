@@ -39,7 +39,7 @@ function manageSelectFilter(data, type, placeholder) {
   const optionsHTML = filter
     .map((option) => {
       return `
-        <li class="selectSection__group__header__container__body__optionsContainer__option ${
+        <li class="option ${
           selectedTags[type].has(option.toLowerCase())
             ? "selectSection__group__header__container__body__optionsContainer__selected"
             : ""
@@ -60,7 +60,7 @@ function manageSelectFilter(data, type, placeholder) {
     // Déplacer les options sélectionnées en haut de la liste
     selectedTags[type].forEach((value) => {
       const selectedOption = optionsContainer.querySelector(
-        `.selectSection__group__header__container__body__optionsContainer__option[data-value="${value}"]`
+        `.option[data-value="${value}"]`
       );
       if (selectedOption) {
         optionsContainer.prepend(selectedOption);
@@ -70,21 +70,18 @@ function manageSelectFilter(data, type, placeholder) {
     const containerHTML = `
     <div class="selectSection__group__header__container" data-type="${type}">
       <div class="selectSection__group__header">
-        <span class="selectSection__group__header__label">${placeholder}</span>
+        <span>${placeholder}</span>
         <i class="fa-solid fa-angle-down"></i>
       </div>
-      <div class="selectSection__group__header__container__body selectSection__group__header__displayContainer">
-        <input 
-          class="selectSection__group__header__container__body__input"
-          type="text" 
-        />
-        <i
-            class="fa-solid fa-xmark fa-sm selectSection__group__header__container__body__input__crossBtn"
-          ></i>
-        <i
-          class="fa-solid fa-magnifying-glass selectSection__group__header__container__body__input__magnifyingGlass"
-        ></i>
-        <ul class="selectSection__group__header__container__body__optionsContainer">
+      <div
+        class="selectSection__group__header__container__body selectSection__group__header__displayContainer"
+      >
+        <input type="text" />
+        <i class="fa-solid fa-xmark fa-sm"></i>
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <ul
+          class="selectSection__group__header__container__body__optionsContainer"
+        >
           ${optionsHTML}
         </ul>
       </div>

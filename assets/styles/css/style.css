@@ -11905,10 +11905,10 @@ textarea.form-control-lg {
 .headerSection__container__searchBtn:hover {
   background: var(--yellow);
 }
-.headerSection__container__searchBtn__magnifyingGlass {
+.headerSection__container__searchBtn i {
   color: white;
 }
-.headerSection__container__searchBtn:hover .headerSection__container__searchBtn__magnifyingGlass {
+.headerSection__container__searchBtn:hover i {
   color: black;
 }
 
@@ -11946,30 +11946,30 @@ textarea.form-control-lg {
   border-bottom-left-radius: 11px;
   border-bottom-right-radius: 11px;
 }
-.selectSection__group__header__container__body__input {
+.selectSection__group__header__container__body input {
   width: 163px;
   height: 36px;
   margin: 10px 15px;
   border: 1px solid var(--lightGrey);
 }
-.selectSection__group__header__container__body__input__crossBtn {
+.selectSection__group__header__container__body input__magnifyingGlass {
+  position: absolute;
+  color: var(--lightGrey);
+  margin: 20px -40px;
+}
+.selectSection__group__header__container__body i.fa-sm {
   left: 130px;
   top: 27px;
   color: var(--grey);
   position: absolute;
   cursor: pointer;
 }
-.selectSection__group__header__container__body__input__magnifyingGlass {
-  position: absolute;
-  color: var(--lightGrey);
-  margin: 20px -40px;
-}
 .selectSection__group__header__container__body__optionsContainer {
   max-height: 315px;
   overflow-y: auto;
   scrollbar-width: none;
 }
-.selectSection__group__header__container__body__optionsContainer__option {
+.selectSection__group__header__container__body__optionsContainer li {
   padding: 8px;
   cursor: pointer;
 }
@@ -11986,7 +11986,7 @@ textarea.form-control-lg {
   display: flex;
   justify-content: space-between;
 }
-.selectSection__group__header__selectedItem__remove {
+.selectSection__group__header__selectedItem button {
   background-color: var(--yellow);
   border: none;
 }

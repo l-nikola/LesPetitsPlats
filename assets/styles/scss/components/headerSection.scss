@@ -53,11 +53,11 @@
       }
 
       // **** Button icon ****
-      &__magnifyingGlass {
+      i {
         color: white;
       }
 
-      &:hover &__magnifyingGlass {
+      &:hover i {
         color: black;
       }
     }
