@@ -5,7 +5,7 @@ const selectedTags = {
 };
 
 // Fonction pour gérer les selects
-function manageSelectFilter(data, type, placeholder, containerId) {
+function manageSelectFilter(data, type, placeholder) {
   const typeMapping = {
     appliances: (recipe) => recipe.appliance.toLowerCase(),
     ustensils: (recipe) =>
@@ -91,7 +91,7 @@ function manageSelectFilter(data, type, placeholder, containerId) {
       <div class="selected-items" data-type="${type}"></div>
     </div>
   `;
-    document.getElementById(containerId).innerHTML = containerHTML;
+    document.getElementById(type).innerHTML = containerHTML;
   }
 }
 
@@ -190,22 +190,19 @@ function generateSelects(recipes) {
     {
       key: "ingredients",
       label: "Ingrédients",
-      containerId: "ingredientsSelectContainer",
     },
     {
       key: "appliances",
       label: "Appareils",
-      containerId: "appliancesSelectContainer",
     },
     {
       key: "ustensils",
       label: "Ustensiles",
-      containerId: "ustensilSelectContainer",
     },
   ];
 
   filters.map((filter) => {
-    manageSelectFilter(recipes, filter.key, filter.label, filter.containerId);
+    manageSelectFilter(recipes, filter.key, filter.label);
   });
 
   // Configurer les événements pour les selects
