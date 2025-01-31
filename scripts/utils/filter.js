@@ -5,7 +5,7 @@ const selectedTags = {
 };
 
 // Fonction pour gérer les selects
-function manageSelectFilter(data, type, placeholder) {
+function manageSelectFilter(data, type, placeholder, containerId) {
   const typeMapping = {
     appliances: (recipe) => recipe.appliance.toLowerCase(),
     ustensils: (recipe) =>
@@ -50,7 +50,24 @@ function manageSelectFilter(data, type, placeholder) {
     })
     .join("");
 
-  const containerHTML = `
+  if (container) {
+    const optionsContainer = container.querySelector(
+      ".selectSection__group__header__container__body__optionsContainer"
+    );
+
+    optionsContainer.innerHTML = optionsHTML;
+
+    // Déplacer les options sélectionnées en haut de la liste
+    selectedTags[type].forEach((value) => {
+      const selectedOption = optionsContainer.querySelector(
+        `.selectSection__group__header__container__body__optionsContainer__option[data-value="${value}"]`
+      );
+      if (selectedOption) {
+        optionsContainer.prepend(selectedOption);
+      }
+    });
+  } else {
+    const containerHTML = `
     <div class="selectSection__group__header__container" data-type="${type}">
       <div class="selectSection__group__header">
         <span class="selectSection__group__header__label">${placeholder}</span>
@@ -74,27 +91,7 @@ function manageSelectFilter(data, type, placeholder) {
       <div class="selected-items" data-type="${type}"></div>
     </div>
   `;
-
-  if (!container) {
-    return containerHTML;
-  } else {
-    const optionsContainer = container.querySelector(
-      ".selectSection__group__header__container__body__optionsContainer"
-    );
-
-    optionsContainer.innerHTML = optionsHTML;
-
-    // Déplacer les options sélectionnées en haut de la liste
-    selectedTags[type].forEach((value) => {
-      const selectedOption = optionsContainer.querySelector(
-        `.selectSection__group__header__container__body__optionsContainer__option[data-value="${value}"]`
-      );
-      if (selectedOption) {
-        optionsContainer.prepend(selectedOption);
-      }
-    });
-
-    return containerHTML;
+    document.getElementById(containerId).innerHTML = containerHTML;
   }
 }
 
@@ -208,9 +205,7 @@ function generateSelects(recipes) {
   ];
 
   filters.map((filter) => {
-    const selectHTML = manageSelectFilter(recipes, filter.key, filter.label);
-
-    document.getElementById(filter.containerId).innerHTML = selectHTML;
+    manageSelectFilter(recipes, filter.key, filter.label, filter.containerId);
   });
 
   // Configurer les événements pour les selects
