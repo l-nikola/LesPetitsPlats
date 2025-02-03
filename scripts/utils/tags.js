@@ -1,7 +1,7 @@
 // Fonction pour gérer les événements des selects et des options
 function bindSelectAndOptions() {
   document
-    .querySelectorAll(".selectSection__group__header__container")
+    .querySelectorAll(".selectSection__group__container")
     .forEach((container) => {
       // Récupérer les elements li
       const options = container.querySelectorAll(".option");
@@ -18,15 +18,13 @@ function bindSelectAndOptions() {
           }
 
           // Ajouter la classe à l'option sélectionnée
-          option.classList.add(
-            "selectSection__group__header__container__body__optionsContainer__selected"
-          );
+          option.classList.add("selectSection__group__selectedOption");
 
           // Ajouter le tag dans l'interface utilisateur
           tagsSection.insertAdjacentHTML(
             "beforeend",
             `
-            <div class="selectSection__group__header__selectedItem" data-type="${type}" data-value="${option.dataset.value}">
+            <div class="selectSection__group__selectedTag" data-type="${type}" data-value="${option.dataset.value}">
               ${option.textContent}
               <button class="remove">
                 <i class="fa-solid fa-xmark"></i>
@@ -46,7 +44,7 @@ function bindSelectAndOptions() {
             .querySelector(".remove")
             .addEventListener("click", (event) => {
               const tagElement = event.target.closest(
-                ".selectSection__group__header__selectedItem"
+                ".selectSection__group__selectedTag"
               );
               const tagType = tagElement.dataset.type;
               const tagValue = tagElement.dataset.value;
@@ -63,7 +61,7 @@ function bindSelectAndOptions() {
               );
               if (correspondingOption) {
                 correspondingOption.classList.remove(
-                  "selectSection__group__header__container__body__optionsContainer__selected"
+                  "selectSection__group__selectedOption"
                 );
               }
 
@@ -94,7 +92,7 @@ function findMatchingTags(searchTerm, recipes) {
 // Fonction pour ajouter un tag
 function addTag(value, type) {
   const container = document.querySelector(
-    `.selectSection__group__header__container[data-type="${type}"]`
+    `.selectSection__group__container[data-type="${type}"]`
   );
   const selectedItemsDiv = container.querySelector(".selected-items");
 
@@ -106,7 +104,7 @@ function addTag(value, type) {
   selectedItemsDiv.insertAdjacentHTML(
     "beforeend",
     `
-    <div class="selectSection__group__header__selectedItem" data-type="${type}" data-value="${value.toLowerCase()}">
+    <div class="selectSection__group__selectedTag" data-type="${type}" data-value="${value.toLowerCase()}">
       ${value}
       <button class="remove">
         <i class="fa-solid fa-xmark"></i>
@@ -120,7 +118,7 @@ function addTag(value, type) {
     .querySelector(".remove")
     .addEventListener("click", (event) => {
       const tagElement = event.target.closest(
-        ".selectSection__group__header__selectedItem"
+        ".selectSection__group__selectedTag"
       );
       const tagType = tagElement.dataset.type;
       const tagValue = tagElement.dataset.value;

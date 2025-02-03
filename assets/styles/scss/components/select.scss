@@ -5,6 +5,11 @@
   &__group {
     display: flex;
     gap: 65px;
+
+    &__displaySelect {
+      display: none;
+    }
+
     // **** Select style ****
     &__header {
       padding: 17px 16px;
@@ -19,73 +24,70 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+    }
 
-      &__displayContainer {
-        display: none;
-      }
+    &__container {
+      position: relative;
 
-      &__container {
-        position: relative;
+      &__body {
+        background: #fff;
+        position: absolute;
+        z-index: 10;
+        border-bottom-left-radius: 11px;
+        border-bottom-right-radius: 11px;
 
-        &__body {
-          background: #fff;
-          position: absolute;
-          z-index: 10;
-          border-bottom-left-radius: 11px;
-          border-bottom-right-radius: 11px;
+        input {
+          width: 163px;
+          height: 36px;
+          margin: 10px 15px;
+          border: 1px solid var(--lightGrey);
 
-          input {
-            width: 163px;
-            height: 36px;
-            margin: 10px 15px;
-            border: 1px solid var(--lightGrey);
-
-            &__magnifyingGlass {
-              position: absolute;
-              color: var(--lightGrey);
-              margin: 20px -40px;
-            }
-          }
-
-          i.fa-sm {
-            left: 130px;
-            top: 27px;
-            color: var(--grey);
+          &__magnifyingGlass {
             position: absolute;
+            color: var(--lightGrey);
+            margin: 20px -40px;
+          }
+        }
+
+        i.fa-sm {
+          left: 130px;
+          top: 27px;
+          color: var(--grey);
+          position: absolute;
+          cursor: pointer;
+        }
+
+        &__optionsContainer {
+          max-height: 315px;
+          overflow-y: auto;
+          scrollbar-width: none;
+
+          li {
+            padding: 8px;
             cursor: pointer;
           }
-
-          &__optionsContainer {
-            max-height: 315px;
-            overflow-y: auto;
-            scrollbar-width: none;
-
-            li {
-              padding: 8px;
-              cursor: pointer;
-            }
-
-            &__selected {
-              background-color: var(--yellow);
-            }
-          }
         }
       }
+    }
 
-      &__selectedItem {
+    // **** Selected item style ****
+    &__selectedOption {
+      background-color: var(--yellow);
+    }
+
+    &__selectedTag {
+      background-color: var(--yellow);
+      width: 195px;
+      height: 56px;
+      padding: 17px 17px;
+      border-radius: 10px;
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+
+      button {
         background-color: var(--yellow);
-        width: 195px;
-        height: 56px;
-        padding: 17px 17px;
-        border-radius: 10px;
-        margin-top: 10px;
-        display: flex;
-        justify-content: space-between;
-
-        button {
-          background-color: var(--yellow);
-          border: none;
-        }
+        border: none;
       }
     }
   }
