@@ -57,6 +57,13 @@
           cursor: pointer;
         }
 
+        i.fa-magnifying-glass {
+          position: absolute;
+          margin: 20px -40px;
+          color: var(--grey);
+          cursor: pointer;
+        }
+
         &__optionsContainer {
           max-height: 315px;
           overflow-y: auto;

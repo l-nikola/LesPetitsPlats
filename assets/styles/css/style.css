@@ -11964,6 +11964,12 @@ textarea.form-control-lg {
   position: absolute;
   cursor: pointer;
 }
+.selectSection__group__container__body i.fa-magnifying-glass {
+  position: absolute;
+  margin: 20px -40px;
+  color: var(--grey);
+  cursor: pointer;
+}
 .selectSection__group__container__body__optionsContainer {
   max-height: 315px;
   overflow-y: auto;
