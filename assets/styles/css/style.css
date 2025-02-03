@@ -11981,6 +11981,20 @@ textarea.form-control-lg {
 }
 .selectSection__group__selectedOption {
   background-color: var(--yellow);
+  position: relative;
+}
+.selectSection__group__selectedOption:hover {
+  font-weight: bold;
+}
+.selectSection__group__selectedOption:hover .remove-option {
+  display: inline;
+}
+.selectSection__group__selectedOption .remove-option {
+  display: none;
+  position: absolute;
+  right: 10px;
+  top: 30%;
+  cursor: pointer;
 }
 .selectSection__group__selectedTag {
   background-color: var(--yellow);

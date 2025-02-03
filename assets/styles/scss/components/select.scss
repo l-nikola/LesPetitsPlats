@@ -80,6 +80,23 @@
     // **** Selected item style ****
     &__selectedOption {
       background-color: var(--yellow);
+      position: relative;
+
+      &:hover {
+        font-weight: bold;
+
+        .remove-option {
+          display: inline;
+        }
+      }
+
+      .remove-option {
+        display: none;
+        position: absolute;
+        right: 10px;
+        top: 30%;
+        cursor: pointer;
+      }
     }
 
     &__selectedTag {

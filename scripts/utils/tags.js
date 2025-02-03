@@ -69,6 +69,16 @@ function bindSelectAndOptions() {
               updateDisplayedRecipes(recipes);
             });
         });
+
+        // Afficher la croix sur le survol de l'option sélectionnée
+        if (option.classList.contains("selectSection__group__selectedOption")) {
+          option.addEventListener("mouseover", () => {
+            option.insertAdjacentHTML(
+              "beforeend",
+              `<i class="fa-solid fa-xmark remove-option"></i>`
+            );
+          });
+        }
       });
     });
 }
