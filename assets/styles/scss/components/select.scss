@@ -91,11 +91,20 @@
       }
 
       .remove-option {
+        color: var(--yellow);
         display: none;
         position: absolute;
         right: 10px;
         top: 30%;
         cursor: pointer;
+        background-color: black;
+        background-size: 50%;
+        border-radius: 50%;
+        width: 19px;
+        height: 19px;
+        padding-left: 5px;
+        padding-top: 9px;
+        margin-right: 5px;
       }
     }
 

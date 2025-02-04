@@ -56,7 +56,7 @@ function bindSelectAndOptions() {
             if (!option.querySelector(".remove-option")) {
               option.insertAdjacentHTML(
                 "beforeend",
-                `<i class="fa-solid fa-xmark remove-option"></i>`
+                `<i class="fa-solid fa-xmark fa-xs remove-option"></i>`
               );
             }
           });
