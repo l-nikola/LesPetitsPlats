@@ -43,105 +43,55 @@ function bindSelectAndOptions() {
           tagsSection.lastElementChild
             .querySelector(".remove")
             .addEventListener("click", (event) => {
-              const tagElement = event.target.closest(
-                ".selectSection__group__selectedTag"
+              removeTag(
+                event.target.closest(".selectSection__group__selectedTag"),
+                container
               );
-              const tagType = tagElement.dataset.type;
-              const tagValue = tagElement.dataset.value;
-
-              // Supprimer le tag de l'interface utilisateur
-              tagElement.remove();
-
-              // Retirer le tag de la structure
-              selectedTags[tagType].delete(tagValue);
-
-              // Supprimer la classe de l'option correspondante
-              const correspondingOption = container.querySelector(
-                `.option[data-value="${tagValue}"]`
-              );
-              if (correspondingOption) {
-                correspondingOption.classList.remove(
-                  "selectSection__group__selectedOption"
-                );
-              }
-
-              // Mettre à jour l'affichage des recettes
-              updateDisplayedRecipes(recipes);
             });
         });
 
         // Afficher la croix sur le survol de l'option sélectionnée
         if (option.classList.contains("selectSection__group__selectedOption")) {
           option.addEventListener("mouseover", () => {
-            option.insertAdjacentHTML(
-              "beforeend",
-              `<i class="fa-solid fa-xmark remove-option"></i>`
-            );
+            if (!option.querySelector(".remove-option")) {
+              option.insertAdjacentHTML(
+                "beforeend",
+                `<i class="fa-solid fa-xmark remove-option"></i>`
+              );
+            }
           });
         }
+
+        // Suppression lors du clique sur l'icône de croix
+        option.addEventListener("click", (event) => {
+          if (event.target.classList.contains("remove-option")) {
+            removeTag(option, container);
+          }
+        });
       });
     });
 }
 
-// Fonction pour rechercher des correspondances de tags existants
-function findMatchingTags(searchTerm, recipes) {
-  const matchingTags = new Set();
-  recipes.map((recipe) => {
-    // Ajouter les ingrédients correspondants
-    recipe.ingredients.map((ingredient) => {
-      if (
-        ingredient.ingredient.toLowerCase().includes(searchTerm.toLowerCase())
-      ) {
-        matchingTags.add(ingredient.ingredient);
-      }
-    });
-  });
-  return Array.from(matchingTags);
-}
+// Fonction pour supprimer un tag / option sélectionnée
+function removeTag(element, container) {
+  const tagValue = element.dataset.value;
+  const tagType = container.dataset.type;
 
-// Fonction pour ajouter un tag
-function addTag(value, type) {
-  const container = document.querySelector(
-    `.selectSection__group__container[data-type="${type}"]`
-  );
-  const selectedItemsDiv = container.querySelector(".selected-items");
+  // Retirer le tag de la structure
+  selectedTags[tagType].delete(tagValue);
 
-  if (selectedTags[type].has(value.toLowerCase())) {
-    return;
-  }
+  // Supprimer le tag dans la liste des tags
+  document
+    .querySelector(
+      `.selectSection__group__selectedTag[data-type="${tagType}"][data-value="${tagValue}"]`
+    )
+    .remove();
 
-  selectedTags[type].add(value.toLowerCase());
-  selectedItemsDiv.insertAdjacentHTML(
-    "beforeend",
-    `
-    <div class="selectSection__group__selectedTag" data-type="${type}" data-value="${value.toLowerCase()}">
-      ${value}
-      <button class="remove">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-    </div>
-  `
-  );
+  // Supprimer la classe de l'option dans la liste des filtres
+  container
+    .querySelector(`.option[data-value="${tagValue}"]`)
+    .classList.remove("selectSection__group__selectedOption");
 
-  // Ajouter un gestionnaire pour le bouton de suppression
-  selectedItemsDiv.lastElementChild
-    .querySelector(".remove")
-    .addEventListener("click", (event) => {
-      const tagElement = event.target.closest(
-        ".selectSection__group__selectedTag"
-      );
-      const tagType = tagElement.dataset.type;
-      const tagValue = tagElement.dataset.value;
-
-      // Supprimer le tag de l'interface utilisateur
-      tagElement.remove();
-
-      // Retirer le tag de la structure
-      selectedTags[tagType].delete(tagValue);
-
-      // Mettre à jour l'affichage des recettes
-      updateDisplayedRecipes(recipes);
-    });
-
+  // Mettre à jour l'affichage des recettes
   updateDisplayedRecipes(recipes);
 }
