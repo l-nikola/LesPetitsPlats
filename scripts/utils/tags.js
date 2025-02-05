@@ -23,14 +23,7 @@ function bindSelectAndOptions() {
           // Ajouter le tag dans l'interface utilisateur
           tagsSection.insertAdjacentHTML(
             "beforeend",
-            `
-            <div class="selectSection__group__selectedTag" data-type="${type}" data-value="${option.dataset.value}">
-              ${option.textContent}
-              <button class="remove">
-                <i class="fa-solid fa-xmark"></i>
-              </button>
-            </div>
-          `
+            generateTagHTML(type, option.dataset.value, option.textContent)
           );
 
           // Ajouter le tag à la structure
@@ -72,6 +65,18 @@ function bindSelectAndOptions() {
     });
 }
 
+// Fonction pour générer le HTML d'un tag
+function generateTagHTML(type, value, textContent) {
+  return `
+    <div class="selectSection__group__selectedTag" data-type="${type}" data-value="${value}">
+      ${textContent}
+      <button class="remove">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+  `;
+}
+
 // Fonction pour rechercher des correspondances de tags existants
 function findMatchingTags(searchTerm, recipes) {
   const matchingTags = new Set();
@@ -90,30 +95,18 @@ function findMatchingTags(searchTerm, recipes) {
 
 // Fonction pour ajouter un tag
 function addTag(value, type) {
-  const container = document.querySelector(
-    `.selectSection__group__container[data-type="${type}"]`
-  );
-  const selectedItemsDiv = container.querySelector(".selected-items");
+  const tagsSection = document.querySelector(".tagsSection");
 
-  if (selectedTags[type].has(value.toLowerCase())) {
-    return;
-  }
+  if (selectedTags[type].has(value.toLowerCase())) return;
 
   selectedTags[type].add(value.toLowerCase());
-  selectedItemsDiv.insertAdjacentHTML(
+  tagsSection.insertAdjacentHTML(
     "beforeend",
-    `
-    <div class="selectSection__group__selectedTag" data-type="${type}" data-value="${value.toLowerCase()}">
-      ${value}
-      <button class="remove">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-    </div>
-  `
+    generateTagHTML(type, value.toLowerCase(), value)
   );
 
   // Ajouter un gestionnaire pour le bouton de suppression
-  selectedItemsDiv.lastElementChild
+  tagsSection.lastElementChild
     .querySelector(".remove")
     .addEventListener("click", (event) => {
       const tagElement = event.target.closest(
