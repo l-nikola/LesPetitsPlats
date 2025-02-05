@@ -40,14 +40,24 @@ function filterRecipes(searchBarId, crossIconClass, recipes) {
       updateDisplay("");
     });
 
-    // Gestion du la soumission du formulaire
+    // Gestion de la soumission du formulaire
     document
       .querySelector(".headerSection__container__searchBtn")
       .addEventListener("click", (event) => {
         event.preventDefault(); // Empêcher le rechargement de la page
+
         const searchTerm = searchBar.value.trim();
+
         if (searchTerm) {
+          // Mettre à jour l'affichage des recettes
           updateDisplay(searchTerm);
+
+          // Trouver les tags correspondants
+          const matchingTags = findMatchingTags(searchTerm, recipes);
+
+          if (matchingTags.length > 0) {
+            addTag(matchingTags[0], "ingredients");
+          }
         }
       });
   }
