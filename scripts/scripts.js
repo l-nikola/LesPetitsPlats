@@ -5,7 +5,7 @@ function filterRecipes(searchBarId, crossIconClass, recipes) {
 
   if (searchBar && crossIcon) {
     const updateDisplay = (searchTerm) => {
-      const recipesToDisplay = filterRecipesByTags(
+      const recipesToDisplay =
         searchTerm.length >= 3
           ? recipes.filter(
               (recipe) =>
@@ -18,11 +18,12 @@ function filterRecipes(searchBarId, crossIconClass, recipes) {
                     .includes(searchTerm.toLowerCase())
                 )
             )
-          : recipes
-      );
+          : recipes;
 
-      displayRecipes(recipesToDisplay, searchTerm);
-      updateRecipeCounter(recipesToDisplay.length);
+      const filteredRecipes = filterRecipesByTags(recipesToDisplay);
+
+      displayRecipes(filteredRecipes, searchTerm);
+      updateRecipeCounter(filteredRecipes.length);
     };
 
     // Masquer l'icône par défaut
