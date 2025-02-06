@@ -5,20 +5,25 @@ function filterRecipes(searchBarId, crossIconClass, recipes) {
 
   if (searchBar && crossIcon) {
     const updateDisplay = (searchTerm) => {
-      const recipesToDisplay =
-        searchTerm.length >= 3
-          ? recipes.filter(
-              (recipe) =>
-                [recipe.name, recipe.description].some((field) =>
-                  field.toLowerCase().includes(searchTerm.toLowerCase())
-                ) ||
-                recipe.ingredients.some((ingredient) =>
-                  ingredient.ingredient
-                    .toLowerCase()
-                    .includes(searchTerm.toLowerCase())
-                )
-            )
-          : recipes;
+      let recipesToDisplay = [];
+
+      if (searchTerm.length >= 3) {
+        for (let i = 0; i < recipes.length; i++) {
+          const recipe = recipes[i];
+          const nameMatch = recipe.name
+            .toLowerCase()
+            .includes(searchTerm.toLowerCase());
+          const descriptionMatch = recipe.description
+            .toLowerCase()
+            .includes(searchTerm.toLowerCase());
+
+          if (nameMatch || descriptionMatch) {
+            recipesToDisplay.push(recipe);
+          }
+        }
+      } else {
+        recipesToDisplay = recipes;
+      }
 
       displayRecipes(recipesToDisplay, searchTerm);
       updateRecipeCounter(recipesToDisplay.length);
