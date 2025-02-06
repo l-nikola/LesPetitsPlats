@@ -25,8 +25,10 @@ function filterRecipes(searchBarId, crossIconClass, recipes) {
         recipesToDisplay = recipes;
       }
 
-      displayRecipes(recipesToDisplay, searchTerm);
-      updateRecipeCounter(recipesToDisplay.length);
+      const filteredRecipes = filterRecipesByTags(recipesToDisplay);
+
+      displayRecipes(filteredRecipes, searchTerm);
+      updateRecipeCounter(filteredRecipes.length);
     };
 
     // Masquer l'icône par défaut
