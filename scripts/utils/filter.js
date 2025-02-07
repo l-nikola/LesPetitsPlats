@@ -101,15 +101,15 @@ function updateAvailableOptions(filteredRecipes) {
   const availableAppliances = new Set();
   const availableUstensils = new Set();
 
-  filteredRecipes.map((recipe) => {
-    recipe.ingredients.map((ingredient) => {
+  for (const recipe of recipes) {
+    for (const ingredient of recipe.ingredients) {
       availableIngredients.add(ingredient.ingredient.toLowerCase());
-    });
+    }
     availableAppliances.add(recipe.appliance.toLowerCase());
-    recipe.ustensils.map((ustensil) => {
+    for (const ustensil of recipe.ustensils) {
       availableUstensils.add(ustensil.toLowerCase());
-    });
-  });
+    }
+  }
 
   // Mise à jour des options dans chaque champ
   manageSelectFilter(filteredRecipes, "ingredients", "Ingrédients");

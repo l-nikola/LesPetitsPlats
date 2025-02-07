@@ -8,8 +8,7 @@ function filterRecipes(searchBarId, crossIconClass, recipes) {
       let recipesToDisplay = [];
 
       if (searchTerm.length >= 3) {
-        for (let i = 0; i < recipes.length; i++) {
-          const recipe = recipes[i];
+        for (const recipe of recipes) {
           const nameMatch = recipe.name
             .toLowerCase()
             .includes(searchTerm.toLowerCase());
