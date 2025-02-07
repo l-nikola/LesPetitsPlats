@@ -11951,6 +11951,7 @@ textarea.form-control-lg {
   height: 36px;
   margin: 10px 15px;
   border: 1px solid var(--lightGrey);
+  padding-right: 55px;
 }
 .selectSection__group__container__body input__magnifyingGlass {
   position: absolute;
