@@ -1,7 +1,7 @@
 // Fonction pour gérer les événements des selects et des options
-function bindSelectAndOptions() {
+function bindSelectAndOptions(type) {
   document
-    .querySelectorAll(".selectSection__group__container")
+    .querySelectorAll(`.selectSection__group__container[data-type="${type}"]`)
     .forEach((container) => {
       // Récupérer les elements li
       const options = container.querySelectorAll(".option");

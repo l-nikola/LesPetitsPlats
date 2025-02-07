@@ -92,7 +92,7 @@ function manageSelectFilter(data, type, placeholder) {
   }
 
   // Ecouter le clic sur les options
-  bindSelectAndOptions();
+  bindSelectAndOptions(type);
 }
 
 // Fonction pour recalculer les options disponibles
