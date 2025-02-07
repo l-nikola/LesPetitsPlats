@@ -81,23 +81,45 @@ function updateDisplayedRecipes(recipes) {
 function filterRecipesByTags(recipes) {
   return recipes.filter(({ ingredients, appliance, ustensils }) => {
     // Vérification des ingrédients
-    const matchesIngredients = [...selectedTags.ingredients].every((tag) =>
-      ingredients.some(({ ingredient }) =>
-        ingredient.toLowerCase().includes(tag.toLowerCase())
-      )
-    );
+    let matchesIngredients = true;
+    for (const tag of selectedTags.ingredients) {
+      let found = false;
+      for (const { ingredient } of ingredients) {
+        if (ingredient.toLowerCase().includes(tag.toLowerCase())) {
+          found = true;
+          break;
+        }
+      }
+      if (!found) {
+        matchesIngredients = false;
+        break;
+      }
+    }
 
     // Vérification des appareils
-    const matchesAppliance = [...selectedTags.appliances].every((tag) =>
-      appliance.toLowerCase().includes(tag.toLowerCase())
-    );
+    let matchesAppliance = true;
+    for (const tag of selectedTags.appliances) {
+      if (!appliance.toLowerCase().includes(tag.toLowerCase())) {
+        matchesAppliance = false;
+        break;
+      }
+    }
 
     // Vérification des ustensiles
-    const matchesUstensils = [...selectedTags.ustensils].every((tag) =>
-      ustensils.some((ustensil) =>
-        ustensil.toLowerCase().includes(tag.toLowerCase())
-      )
-    );
+    let matchesUstensils = true;
+    for (const tag of selectedTags.ustensils) {
+      let found = false;
+      for (const ustensil of ustensils) {
+        if (ustensil.toLowerCase().includes(tag.toLowerCase())) {
+          found = true;
+          break;
+        }
+      }
+      if (!found) {
+        matchesUstensils = false;
+        break;
+      }
+    }
 
     // Retourne true si toutes les conditions sont remplies
     return matchesIngredients && matchesAppliance && matchesUstensils;

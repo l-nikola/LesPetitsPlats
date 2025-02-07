@@ -80,16 +80,15 @@ function generateTagHTML(type, value, textContent) {
 // Fonction pour rechercher des correspondances de tags existants
 function findMatchingTags(searchTerm, recipes) {
   const matchingTags = new Set();
-  recipes.map((recipe) => {
-    // Ajouter les ingrédients correspondants
-    recipe.ingredients.map((ingredient) => {
+  for (const recipe of recipes) {
+    for (const ingredient of recipe.ingredients) {
       if (
         ingredient.ingredient.toLowerCase().includes(searchTerm.toLowerCase())
       ) {
         matchingTags.add(ingredient.ingredient);
       }
-    });
-  });
+    }
+  }
   return Array.from(matchingTags);
 }
 
