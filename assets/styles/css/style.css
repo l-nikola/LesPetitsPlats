@@ -11982,6 +11982,7 @@ textarea.form-control-lg {
 .selectSection__group__selectedOption {
   background-color: var(--yellow);
   position: relative;
+  cursor: default !important;
 }
 .selectSection__group__selectedOption:hover {
   font-weight: 600;

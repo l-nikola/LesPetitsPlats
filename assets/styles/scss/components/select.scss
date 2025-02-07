@@ -81,6 +81,7 @@
     &__selectedOption {
       background-color: var(--yellow);
       position: relative;
+      cursor: default !important;
 
       &:hover {
         font-weight: 600;
