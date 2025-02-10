@@ -5,6 +5,8 @@
   &__group {
     display: flex;
     gap: 65px;
+    margin-left: 15px;
+    margin-right: auto;
 
     &__displaySelect {
       display: none;
@@ -130,6 +132,8 @@
   &__recipeNumber {
     font-family: Anton;
     font-size: 21px;
+    margin-right: 55px;
+    margin-left: auto;
   }
 }
 

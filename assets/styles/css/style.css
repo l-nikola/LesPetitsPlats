@@ -11848,11 +11848,12 @@ textarea.form-control-lg {
 }
 .header__picture {
   width: 100%;
-  height: 1100px;
-  top: -195px;
+  height: 960px;
+  top: -215px;
   object-fit: cover;
   position: relative;
   z-index: 0;
+  clip-path: inset(0 0 75px 0);
 }
 .header__logo {
   width: 250px;
@@ -11867,12 +11868,12 @@ textarea.form-control-lg {
   font-family: Anton;
   font-size: 44px;
   width: 730px;
-  top: 300px;
+  top: 260px;
   position: absolute;
 }
 .headerSection__container {
   position: absolute;
-  top: 460px;
+  top: 405px;
   width: 954px;
   display: flex;
 }
@@ -11918,6 +11919,8 @@ textarea.form-control-lg {
 .selectSection__group {
   display: flex;
   gap: 65px;
+  margin-left: 15px;
+  margin-right: auto;
 }
 .selectSection__group__displaySelect {
   display: none;
@@ -12024,6 +12027,8 @@ textarea.form-control-lg {
 .selectSection__recipeNumber {
   font-family: Anton;
   font-size: 21px;
+  margin-right: 55px;
+  margin-left: auto;
 }
 
 .tagsSection {
@@ -12106,7 +12111,7 @@ textarea.form-control-lg {
 
 main {
   background: #ededed;
-  margin-top: -195px;
+  margin-top: -290px;
 }
 
 a {
