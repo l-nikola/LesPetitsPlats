@@ -60,6 +60,10 @@ function filterRecipes(searchBarId, crossIconClass, recipes) {
 
           if (matchingTags.length > 0) {
             addTag(matchingTags[0], "ingredients");
+
+            searchBar.value = "";
+            crossIcon.style.display = "none";
+            updateDisplay("");
           }
         }
       });
