@@ -24,6 +24,7 @@ function filterRecipes(searchBarId, crossIconClass, recipes) {
 
       displayRecipes(filteredRecipes, searchTerm);
       updateRecipeCounter(filteredRecipes.length);
+      updateAvailableOptions(filteredRecipes);
     };
 
     // Masquer l'icône par défaut

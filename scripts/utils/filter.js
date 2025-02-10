@@ -96,12 +96,12 @@ function manageSelectFilter(data, type, placeholder) {
 }
 
 // Fonction pour recalculer les options disponibles
-function updateAvailableOptions(recipes) {
+function updateAvailableOptions(filteredRecipes) {
   const availableIngredients = new Set();
   const availableAppliances = new Set();
   const availableUstensils = new Set();
 
-  recipes.map((recipe) => {
+  filteredRecipes.map((recipe) => {
     recipe.ingredients.map((ingredient) => {
       availableIngredients.add(ingredient.ingredient.toLowerCase());
     });
@@ -112,9 +112,9 @@ function updateAvailableOptions(recipes) {
   });
 
   // Mise à jour des options dans chaque champ
-  manageSelectFilter(recipes, "ingredients", "Ingrédients");
-  manageSelectFilter(recipes, "appliances", "Appareils");
-  manageSelectFilter(recipes, "ustensils", "Ustensiles");
+  manageSelectFilter(filteredRecipes, "ingredients", "Ingrédients");
+  manageSelectFilter(filteredRecipes, "appliances", "Appareils");
+  manageSelectFilter(filteredRecipes, "ustensils", "Ustensiles");
 }
 
 // Fonction pour initialiser la recherche dans les selects

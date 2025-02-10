@@ -31,6 +31,8 @@ function bindSelectAndOptions(type) {
 
           // Mettre à jour l'affichage des recettes
           updateDisplayedRecipes(recipes);
+          // Mettre à jour les options disponibles dans les selects
+          updateAvailableOptions(recipes);
 
           // Ajouter un gestionnaire pour le bouton de suppression
           tagsSection.lastElementChild
