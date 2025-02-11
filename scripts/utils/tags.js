@@ -71,7 +71,7 @@ function bindSelectAndOptions(type) {
 function generateTagHTML(type, value, textContent) {
   return `
     <div class="selectSection__group__selectedTag" data-type="${type}" data-value="${value}">
-      ${textContent}
+      <span>${textContent}</span>
       <button class="remove">
         <i class="fa-solid fa-xmark"></i>
       </button>

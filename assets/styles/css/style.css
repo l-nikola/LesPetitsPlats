@@ -12020,6 +12020,11 @@ textarea.form-control-lg {
   display: flex;
   justify-content: space-between;
 }
+.selectSection__group__selectedTag span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .selectSection__group__selectedTag button {
   background-color: var(--yellow);
   border: none;
