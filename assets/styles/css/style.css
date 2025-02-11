@@ -12033,8 +12033,9 @@ textarea.form-control-lg {
 
 .tagsSection {
   display: flex;
-  gap: 20px;
-  margin: 0 70px;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  margin: 0 100px;
 }
 
 .recipe {
