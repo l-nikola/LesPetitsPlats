@@ -11914,12 +11914,12 @@ textarea.form-control-lg {
 }
 
 .selectSection {
-  padding: 15px 70px;
+  padding: 15px 90px;
 }
 .selectSection__group {
   display: flex;
   gap: 65px;
-  margin-left: 15px;
+  margin-left: 10px;
   margin-right: auto;
 }
 .selectSection__group__displaySelect {
@@ -12027,7 +12027,7 @@ textarea.form-control-lg {
 .selectSection__recipeNumber {
   font-family: Anton;
   font-size: 21px;
-  margin-right: 55px;
+  margin-right: 15px;
   margin-left: auto;
 }
 
@@ -12110,8 +12110,12 @@ textarea.form-control-lg {
 }
 
 main {
+  margin: -280px auto 0 auto;
+  max-width: 1440px;
+}
+
+body {
   background: #ededed;
-  margin-top: -290px;
 }
 
 a {
