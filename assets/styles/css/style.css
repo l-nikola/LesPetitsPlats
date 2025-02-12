@@ -11916,11 +11916,21 @@ textarea.form-control-lg {
 .selectSection {
   padding: 15px 90px;
 }
+@media only screen and (max-width: 1439px) and (min-width: 1024px) {
+  .selectSection {
+    padding: 15px 95px;
+  }
+}
 .selectSection__group {
   display: flex;
   gap: 65px;
   margin-left: 10px;
   margin-right: auto;
+}
+@media only screen and (max-width: 1439px) and (min-width: 1024px) {
+  .selectSection__group {
+    gap: 15px;
+  }
 }
 .selectSection__group__displaySelect {
   display: none;
@@ -12042,6 +12052,12 @@ textarea.form-control-lg {
   gap: 10px 20px;
   margin: 0 100px;
 }
+@media only screen and (max-width: 1439px) and (min-width: 1024px) {
+  .tagsSection {
+    margin: 0 105px;
+    gap: 5px 15px;
+  }
+}
 
 .recipe {
   padding: 0;
@@ -12118,6 +12134,11 @@ textarea.form-control-lg {
 main {
   margin: -280px auto 0 auto;
   max-width: 1440px;
+}
+@media only screen and (max-width: 1439px) and (min-width: 1024px) {
+  main {
+    max-width: 1024px;
+  }
 }
 
 body {

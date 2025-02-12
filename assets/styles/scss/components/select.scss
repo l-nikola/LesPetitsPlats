@@ -2,12 +2,22 @@
 .selectSection {
   padding: 15px 90px;
 
+  // ********** Laptop S **********
+  @media only screen and (max-width: 1439px) and (min-width: 1024px) {
+    padding: 15px 95px;
+  }
+
   // **** Group select ****
   &__group {
     display: flex;
     gap: 65px;
     margin-left: 10px;
     margin-right: auto;
+
+    // ********** Laptop S **********
+    @media only screen and (max-width: 1439px) and (min-width: 1024px) {
+      gap: 15px;
+    }
 
     &__displaySelect {
       display: none;
@@ -150,4 +160,10 @@
   flex-wrap: wrap;
   gap: 10px 20px;
   margin: 0 100px;
+
+  // ********** Laptop S **********
+  @media only screen and (max-width: 1439px) and (min-width: 1024px) {
+    margin: 0 105px;
+    gap: 5px 15px;
+  }
 }
