@@ -11877,6 +11877,11 @@ textarea.form-control-lg {
   width: 954px;
   display: flex;
 }
+@media only screen and (max-width: 767px) and (min-width: 425px) {
+  .headerSection__container {
+    top: 490px;
+  }
+}
 .headerSection__container__input {
   width: 100%;
   height: 72px;
@@ -11891,6 +11896,11 @@ textarea.form-control-lg {
   color: var(--grey);
   position: absolute;
   cursor: pointer;
+}
+@media only screen and (max-width: 767px) and (min-width: 425px) {
+  .headerSection__container__crossBtn {
+    left: 315px;
+  }
 }
 @media only screen and (max-width: 1023px) and (min-width: 768px) {
   .headerSection__container__crossBtn {
@@ -11917,6 +11927,11 @@ textarea.form-control-lg {
 .headerSection__container__searchBtn:hover i {
   color: black;
 }
+@media only screen and (max-width: 767px) and (min-width: 425px) {
+  .headerSection__container__searchBtn {
+    left: 82%;
+  }
+}
 @media only screen and (max-width: 1023px) and (min-width: 768px) {
   .headerSection__container__searchBtn {
     left: 90%;
@@ -11936,6 +11951,12 @@ textarea.form-control-lg {
   gap: 65px;
   margin-left: 10px;
   margin-right: auto;
+}
+@media only screen and (max-width: 767px) and (min-width: 425px) {
+  .selectSection__group {
+    margin-top: 50px;
+    display: block;
+  }
 }
 @media only screen and (max-width: 1023px) and (min-width: 768px) {
   .selectSection__group {
@@ -11967,6 +11988,11 @@ textarea.form-control-lg {
 }
 .selectSection__group__container {
   position: relative;
+}
+@media only screen and (max-width: 767px) and (min-width: 425px) {
+  .selectSection__group__container {
+    margin-top: 15px;
+  }
 }
 .selectSection__group__container__body {
   background: #fff;
@@ -12060,6 +12086,11 @@ textarea.form-control-lg {
   font-size: 21px;
   margin-right: 15px;
   margin-left: auto;
+}
+@media only screen and (max-width: 767px) and (min-width: 425px) {
+  .selectSection__recipeNumber {
+    position: absolute;
+  }
 }
 @media only screen and (max-width: 1023px) and (min-width: 768px) {
   .selectSection__recipeNumber {
@@ -12156,6 +12187,11 @@ main {
   margin: -280px auto 0 auto;
   max-width: 1440px;
 }
+@media only screen and (max-width: 767px) and (min-width: 425px) {
+  main {
+    max-width: 425px;
+  }
+}
 @media only screen and (max-width: 1023px) and (min-width: 768px) {
   main {
     max-width: 768px;
@@ -12188,6 +12224,13 @@ ul {
 .mt-ms {
   margin-top: 2rem;
   margin-left: 4.7rem;
+}
+@media only screen and (max-width: 767px) and (min-width: 425px) {
+  .mt-ms {
+    display: flex;
+    justify-content: center;
+    margin-left: 0;
+  }
 }
 @media only screen and (max-width: 1023px) and (min-width: 768px) {
   .mt-ms {

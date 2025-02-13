@@ -21,6 +21,11 @@ main {
   margin: -280px auto 0 auto;
   max-width: 1440px;
 
+  // ********** Mobile **********
+  @media only screen and (max-width: 767px) and (min-width: 425px) {
+    max-width: 425px;
+  }
+
   // ********** Tablet **********
   @media only screen and (max-width: 1023px) and (min-width: 768px) {
     max-width: 768px;
@@ -55,6 +60,13 @@ ul {
 .mt-ms {
   margin-top: 2rem;
   margin-left: 4.7rem;
+
+  // ********** Mobile **********
+  @media only screen and (max-width: 767px) and (min-width: 425px) {
+    display: flex;
+    justify-content: center;
+    margin-left: 0;
+  }
 
   // ********** Tablet **********
   @media only screen and (max-width: 1023px) and (min-width: 768px) {
