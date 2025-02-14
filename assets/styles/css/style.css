@@ -12186,6 +12186,7 @@ textarea.form-control-lg {
 main {
   margin: -280px auto 0 auto;
   max-width: 1440px;
+  overflow-x: hidden;
 }
 @media only screen and (max-width: 767px) and (min-width: 425px) {
   main {
