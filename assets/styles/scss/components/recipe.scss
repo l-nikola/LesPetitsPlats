@@ -6,6 +6,13 @@
   border-radius: 20px;
   background-color: white;
 
+  
+
+  // ********** Mobile M **********
+  @media only screen and (max-width: 424px) and (min-width: 375px) {
+    width: 335px;
+  }
+
   // **** Recipe card ****
   &__card {
     color: black;
