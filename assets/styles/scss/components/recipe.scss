@@ -6,7 +6,10 @@
   border-radius: 20px;
   background-color: white;
 
-  
+  // ********** Mobile S **********
+  @media only screen and (max-width: 374px) and (min-width: 320px) {
+    width: 280px;
+  }
 
   // ********** Mobile M **********
   @media only screen and (max-width: 424px) and (min-width: 375px) {
@@ -56,6 +59,12 @@
 
       // **** Recipe group step ****
       &__steps {
+        // ********** Mobile S **********
+        @media only screen and (max-width: 374px) and (min-width: 320px) {
+          margin-left: 10px;
+          width: 260px;
+        }
+
         // **** Recipe step text****
         &__text {
           font-size: 14px;
@@ -63,6 +72,11 @@
           -webkit-box-orient: vertical; // Orientation en colonne
           -webkit-line-clamp: 4; // Limiter à 4 lignes
           overflow: hidden; // Cacher le contenu qui dépasse
+
+          // ********** Mobile S **********
+          @media only screen and (max-width: 374px) and (min-width: 320px) {
+            width: 260px;
+          }
         }
       }
 
@@ -78,6 +92,12 @@
       &__ingredients {
         width: 100%;
         margin-top: 25px;
+
+        // ********** Mobile S **********
+        @media only screen and (max-width: 374px) and (min-width: 320px) {
+          margin-left: 10px;
+          width: 260px;
+        }
 
         // **** Recipe group ingredients name ****
         &__name {
