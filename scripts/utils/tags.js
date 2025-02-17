@@ -137,16 +137,20 @@ function removeTag(element, container) {
   selectedTags[tagType].delete(tagValue);
 
   // Supprimer le tag dans la liste des tags
-  document
-    .querySelector(
-      `.selectSection__group__selectedTag[data-type="${tagType}"][data-value="${tagValue}"]`
-    )
-    .remove();
+  const tagElement = document.querySelector(
+    `.selectSection__group__selectedTag[data-type="${tagType}"][data-value="${tagValue}"]`
+  );
+  if (tagElement) {
+    tagElement.remove();
+  }
 
   // Supprimer la classe de l'option dans la liste des filtres
-  container
-    .querySelector(`.option[data-value="${tagValue}"]`)
-    .classList.remove("selectSection__group__selectedOption");
+  const optionElement = container.querySelector(
+    `.option[data-value="${tagValue}"]`
+  );
+  if (optionElement) {
+    optionElement.classList.remove("selectSection__group__selectedOption");
+  }
 
   // Mettre à jour l'affichage des recettes
   updateDisplayedRecipes(recipes);
