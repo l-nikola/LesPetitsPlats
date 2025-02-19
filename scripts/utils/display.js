@@ -37,10 +37,15 @@ function generateRecipeCard({ image, time, name, description, ingredients }) {
 // Fonction pour afficher les cartes de recettes
 function displayRecipes(recipes, searchTerm = "") {
   const recipeContainer = document.getElementById("recipeContainer");
-  recipeContainer.innerHTML =
-    recipes && recipes.length
-      ? recipes.map(generateRecipeCard).join("")
-      : `<p class="text-center">Aucune recette ne contient '${searchTerm}', vous pouvez chercher 'tarte aux pommes', 'poisson', etc..</p>`;
+  if (recipes && recipes.length) {
+    let recipesHTML = "";
+    for (const recipe of recipes) {
+      recipesHTML += generateRecipeCard(recipe);
+    }
+    recipeContainer.innerHTML = recipesHTML;
+  } else {
+    recipeContainer.innerHTML = `<p class="text-center">Aucune recette ne contient '${searchTerm}', vous pouvez chercher 'tarte aux pommes', 'poisson', etc..</p>`;
+  }
 }
 
 // Fonction pour mettre à jour le compteur de recettes
@@ -79,13 +84,14 @@ function updateDisplayedRecipes(recipes) {
 
 // Fonction pour filtrer les recettes en fonction des tags
 function filterRecipesByTags(recipes) {
-  return recipes.filter(({ ingredients, appliance, ustensils }) => {
+  const filteredRecipes = [];
+  for (const recipe of recipes) {
     // Vérification des ingrédients
     let matchesIngredients = true;
     for (const tag of selectedTags.ingredients) {
       let found = false;
-      for (const { ingredient } of ingredients) {
-        if (ingredient.toLowerCase().includes(tag.toLowerCase())) {
+      for (const ingredient of recipe.ingredients) {
+        if (ingredient.ingredient.toLowerCase().includes(tag.toLowerCase())) {
           found = true;
           break;
         }
@@ -99,7 +105,7 @@ function filterRecipesByTags(recipes) {
     // Vérification des appareils
     let matchesAppliance = true;
     for (const tag of selectedTags.appliances) {
-      if (!appliance.toLowerCase().includes(tag.toLowerCase())) {
+      if (!recipe.appliance.toLowerCase().includes(tag.toLowerCase())) {
         matchesAppliance = false;
         break;
       }
@@ -109,7 +115,7 @@ function filterRecipesByTags(recipes) {
     let matchesUstensils = true;
     for (const tag of selectedTags.ustensils) {
       let found = false;
-      for (const ustensil of ustensils) {
+      for (const ustensil of recipe.ustensils) {
         if (ustensil.toLowerCase().includes(tag.toLowerCase())) {
           found = true;
           break;
@@ -121,7 +127,10 @@ function filterRecipesByTags(recipes) {
       }
     }
 
-    // Retourne true si toutes les conditions sont remplies
-    return matchesIngredients && matchesAppliance && matchesUstensils;
-  });
+    // Ajouter la recette si toutes les conditions sont remplies
+    if (matchesIngredients && matchesAppliance && matchesUstensils) {
+      filteredRecipes.push(recipe);
+    }
+  }
+  return filteredRecipes;
 }

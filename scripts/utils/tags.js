@@ -89,7 +89,11 @@ function findMatchingTags(searchTerm, recipes) {
       }
     }
   }
-  return Array.from(matchingTags);
+  const result = [];
+  for (const tag of matchingTags) {
+    result.push(tag);
+  }
+  return result;
 }
 
 // Fonction pour ajouter un tag
