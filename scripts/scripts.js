@@ -70,6 +70,20 @@ function filterRecipes(searchBarId, crossIconClass, recipes) {
   }
 }
 
+// Fonction pour échapper les balises HTML
+function escapeHTML(str) {
+  return str.toString().replace(/[&<>"']/g, function (match) {
+    const escape = {
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#039;",
+    };
+    return escape[match];
+  });
+}
+
 // Initialisation
 document.addEventListener("DOMContentLoaded", () => {
   filterRecipes("searchBar", "headerSection__container__crossBtn", recipes);
