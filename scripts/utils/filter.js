@@ -38,6 +38,7 @@ function manageSelectFilter(data, type, placeholder) {
 
   const optionsHTML = filter
     .map((option) => {
+      option = escapeHTML(option);
       return `
         <li class="option ${
           selectedTags[type].has(option.toLowerCase())

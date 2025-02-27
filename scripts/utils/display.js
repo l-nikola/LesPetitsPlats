@@ -1,11 +1,16 @@
 // Fonction pour générer une carte de recette
 function generateRecipeCard({ image, time, name, description, ingredients }) {
+  description = escapeHTML(description);
   const ingredientList = ingredients
     .map(
       ({ ingredient, quantity = "", unit = "" }) => `
       <li class="col-6">
-        <span class="recipe__card__info__ingredients__name">${ingredient}</span><br />
-        <span class="recipe__card__info__ingredients__quantity">${quantity} ${unit}</span>
+        <span class="recipe__card__info__ingredients__name">${escapeHTML(
+          ingredient
+        )}</span><br />
+        <span class="recipe__card__info__ingredients__quantity">${escapeHTML(
+          quantity
+        )} ${escapeHTML(unit)}</span>
       </li>
     `
     )
