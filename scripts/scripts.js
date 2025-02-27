@@ -79,9 +79,8 @@ function escapeHTML(str) {
       "<": "&lt;",
       ">": "&gt;",
       '"': "&quot;",
-      "'": "&#039;",
     };
-    return escape[match];
+    return escape[match] || match;
   });
 }
 
