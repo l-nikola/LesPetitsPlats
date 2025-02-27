@@ -5,6 +5,7 @@ function filterRecipes(searchBarId, crossIconClass, recipes) {
 
   if (searchBar && crossIcon) {
     const updateDisplay = (searchTerm) => {
+      searchTerm = escapeHTML(searchTerm);
       let recipesToDisplay = [];
 
       if (searchTerm.length >= 3) {

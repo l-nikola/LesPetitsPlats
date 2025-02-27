@@ -23,7 +23,11 @@ function bindSelectAndOptions(type) {
           // Ajouter le tag dans l'interface utilisateur
           tagsSection.insertAdjacentHTML(
             "beforeend",
-            generateTagHTML(type, option.dataset.value, option.textContent)
+            generateTagHTML(
+              type,
+              option.dataset.value,
+              escapeHTML(option.textContent)
+            )
           );
 
           // Ajouter le tag à la structure
@@ -69,7 +73,7 @@ function bindSelectAndOptions(type) {
 function generateTagHTML(type, value, textContent) {
   return `
     <div class="selectSection__group__selectedTag" data-type="${type}" data-value="${value}">
-      <span>${textContent}</span>
+      <span>${escapeHTML(textContent)}</span>
       <button class="remove">
         <i class="fa-solid fa-xmark"></i>
       </button>
@@ -105,7 +109,7 @@ function addTag(value, type) {
   selectedTags[type].add(value.toLowerCase());
   tagsSection.insertAdjacentHTML(
     "beforeend",
-    generateTagHTML(type, value.toLowerCase(), value)
+    generateTagHTML(type, value.toLowerCase(), escapeHTML(value))
   );
 
   // Ajouter un gestionnaire pour le bouton de suppression
