@@ -12059,7 +12059,8 @@ textarea.form-control-lg {
 }
 .selectSection__group__container__body i.fa-magnifying-glass {
   position: absolute;
-  margin: 20px -40px;
+  top: 20px;
+  right: 30px;
   color: var(--grey);
   cursor: pointer;
 }
